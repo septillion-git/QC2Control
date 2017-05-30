@@ -16,6 +16,9 @@ void QC2Control::begin(){
   pinMode(_DpPin, INPUT);
   pinMode(_DmPin, INPUT);
   
+  //because the Arduino starts the right way we just wait till millis() passes
+  //Has the advantage that if you call this last in setup, all other setup
+  //stuff will be done while "waiting" :)
   while(millis() < _WaitTime  );
   
   digitalWrite(_DmPin, LOW);

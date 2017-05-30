@@ -11,7 +11,7 @@
  *  
  *  The QC2Control-class includes all the functions to easily set the voltage of a Quick Charge 2.0 source..
  *  
- *  @see setVoltage()
+ *  @see setVoltage() 
  */
 class QC2Control{
   public:
