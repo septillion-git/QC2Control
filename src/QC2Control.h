@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @brief A simple Arduino library to set the voltage on a QuickCharge 2.0 charger.
+ *  @brief A simple Arduino library to set the voltage on a Quick Charge 2.0 charger.
  */
 #pragma once
 
@@ -16,7 +16,7 @@
 class QC2Control{
   public:
     /**
-     *  @brief Makes an object to control a QuickCharge 2.0 source.
+     *  @brief Makes an object to control a Quick Charge 2.0 source.
      *  
      *  @details Makes it possible to set the voltage of the QC2.0 
      *  source to 5V, 9V or 12V.) See general description on how to wire it.
