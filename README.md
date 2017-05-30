@@ -5,7 +5,7 @@ By Timo Engelgeer (Septillion)
 All credit goes to [Hugatry's HackVlog](https://www.youtube.com/channel/UCHgeChD442K0ah-KxEg0PHw) because he came up with the idea and first code. I just made a nicer wrapper :p
 
 ## What does it do?
-Makes it possible to set the voltage (even on the fly) of a Quick Charge 2.0 source like a mains charger or power bank. Possible voltages are 5V (USB default), 9V or 12V. The source needs to support the [Quick Charge 2.0](https://www.qualcomm.com/products/features/quick-charge) technology form [Qualcomm](https://www.qualcomm.com/) in order to work.
+QC2Control makes it possible to set the voltage (even on the fly) of a Quick Charge 2.0 source like a mains charger or power bank. Possible voltages are 5V (USB default), 9V or 12V. The source needs to support the [Quick Charge 2.0](https://www.qualcomm.com/products/features/quick-charge) technology form [Qualcomm](https://www.qualcomm.com/) in order to work.
 
 ### How to connect?
 Diagram will come. For now, see video description of ["Set QuickCharge 2.0 PSU's Output Voltage With Arduino" (YouTube)](https://youtu.be/MldONoCgr20). It's the **new** two pin version.
