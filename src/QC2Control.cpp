@@ -50,7 +50,7 @@ void QC2Control::setVoltage(byte volt){
       digitalWrite(_DmPin, HIGH);
       pinMode(_DmPin, OUTPUT); 
       break;
-    //in all other cases, save 5V
+    //in all other cases, go for the save 5V
     default:
       pinMode(_DpPin, INPUT);
       pinMode(_DmPin, INPUT);
