@@ -4,17 +4,17 @@ By Timo Engelgeer (Septillion)
 
 All credit goes to [Hugatry's HackVlog](https://www.youtube.com/channel/UCHgeChD442K0ah-KxEg0PHw) because he came up with the idea and first code. I just made a nicer wrapper :p
 
-##What does it do?
+## What does it do?
 Makes it possible to set the voltage (even on the fly) of a Quick Charge 2.0 source like a mains charger or power bank. Possible voltages are 5V (USB default), 9V or 12V. The source needs to support the [Quick Charge 2.0](https://www.qualcomm.com/products/features/quick-charge) technology form [Qualcomm](https://www.qualcomm.com/) in order to work.
 
-###How to connect?
+### How to connect?
 Diagram will come. For now, see video description of ["Set QuickCharge 2.0 PSU's Output Voltage With Arduino" (YouTube)](https://youtu.be/MldONoCgr20). It's the **new** two pin version.
 
-##Download and install
-###Library manager
+## Download and install
+### Library manager
 Will come!
 
-###GitHub
+### GitHub
 Latest release: **Release soon!**
 
 1. Download the latest release.
@@ -23,7 +23,7 @@ Latest release: **Release soon!**
 4. Restart the Arduino IDE if you had it open.
 5. Done!
 
-###Update
+### Update
 You can update to the latest version of the library in the Library Manager as well. 
 
 1.  Open the Arduino IDE (1.5 or above).
@@ -35,7 +35,7 @@ You can update to the latest version of the library in the Library Manager as we
 
 Alternatively you can download it from GitHub and simply unpack it over the current version (or remove the old version first).
 
-##Usage
+## Usage
 Just see this simple sketch
 ```C++
 #include <QC2Control.h>
@@ -77,7 +77,7 @@ You can also view the documentation via [GitHub HTML Preview](https://htmlprevie
 
 This documentation is powered by [Doxygen](http://www.doxygen.org/) and thus fully extracted from the source files. This README.md is also used as Main Page.
 
-##FAQ
+## FAQ
 
-###Can I control more the one Quick Charge source with a single Arduino?
+### Can I control more the one Quick Charge source with a single Arduino?
 Yes you can! Just make multiple QC2Control objects connected to different pins. But be sure to connect GND of all power supplies (including QC2.0 sources) together but **not** the voltage rails.
