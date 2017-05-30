@@ -60,11 +60,11 @@ void setup() {
 void loop() {
   //And you can change it on the fly
   delay(1000);
-  qickCharge.setVoltage(9);
+  quickCharge.setVoltage(9);
   delay(1000);
-  qickCharge.setVoltage(5);
+  quickCharge.setVoltage(5);
   delay(1000);
-  qickCharge.setVoltage(12);
+  quickCharge.setVoltage(12);
 }
 ```
 
