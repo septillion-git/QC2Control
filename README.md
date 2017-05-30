@@ -67,8 +67,9 @@ void loop() {
   quickCharge.setVoltage(12);
 }
 ```
-
 **Please note**, delay() here is just used to demonstrate. Better not to stop the complete program with delay()'s.
+
+If you can, place the call to begin() (or setVoltage()) at the end of the setup(). The handshake needs a fixed time but that already starts when the QC 2.0 source (and thus the Arduino) is turned on. So by doing begin() last you can do stuff while waiting.
 
 ## Full documentation
 Full documentation of all the methods of this library can be found inside the library located in `QC2Control\doc`. Just open `QC2Control\doc\index.html` to see all methods of FadeLed. 

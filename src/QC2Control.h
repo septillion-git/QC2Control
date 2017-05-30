@@ -41,6 +41,8 @@ class QC2Control{
      *  
      *  @details Possible voltages are 5V, 9V and 12V. Any other number will result in 5V. 
      *  
+     *  begin() is **blocking code**. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time (1,25s minimum). But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting begin() (or a call to setVoltage()) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.
+     *  
      *  @note If no handshake has been done (via begin()) with the QC2.0 source the first call to setVoltage() will result in a call to begin() to do the handshake.
      *  
      *  @param [in] volt The desired voltage, 5, 9 or 12.
