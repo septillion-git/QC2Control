@@ -38,7 +38,7 @@ QC2Control is available via Arduino IDE Library Manager.
 6.  Done!
 
 ### GitHub
-Latest release: **[v1.0.0](https://github.com/septillion-git/QC2Control/archive/v1.0.0.zip)**
+Latest release: **[v1.1.0](https://github.com/septillion-git/QC2Control/archive/v1.1.0.zip)**
 
 1. Download the latest release.
 2. Extract it to the `libraries` folder **inside** your Sketchbook. Default is `[user]\Arduino\libraries`. 
@@ -110,7 +110,7 @@ Return the last voltage that was set, so it will either 5, 9 or 12.
 ## Full documentation
 Full documentation of all the methods of this library can be found inside the library located in `QC2Control\doc`. Just open `QC2Control\doc\index.html` to see all methods of QC2Control. 
 
-You can also view the documentation via [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/septillion-git/QC2Control/blob/v1.0.0/doc/index.html).
+You can also view the documentation via [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/septillion-git/QC2Control/blob/v1.1.0/doc/index.html).
 
 This documentation is powered by [Doxygen](http://www.doxygen.org/) and thus fully extracted from the source files. This README.md is also used as Main Page.
 
