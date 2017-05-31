@@ -107,9 +107,10 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p><a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control</a> makes it possible to set the voltage (even on the fly) of a Quick Charge 2.0 source like a mains charger or power bank. Possible voltages are 5V (USB default), 9V or 12V. The source needs to support the <a href="https://www.qualcomm.com/products/features/quick-charge">Quick Charge 2.0</a> technology form <a href="https://www.qualcomm.com/">Qualcomm</a> in order to work.</p>
 <h3>How to connect?</h3>
 <p>All you need to use four resistors and (optionally) two diodes. </p><div class="image">
-<img src="extras/circuit.png"  alt="QC2Control circuit"/>
-</div>
-<p>The wire color for a normal USB-cable is V<sub>BUS</sub>: Red Data+: Green Data-: White GND: Black</p>
+<img src="circuit.png" alt="circuit.png"/>
+<div class="caption">
+QC2Control circuit</div></div>
+<p> The wire color for a normal USB-cable is V<sub>BUS</sub>: Red Data+: Green Data-: White GND: Black</p>
 <p>You're free to pick any pin on the Arduino, just be sure to point to the right pins in <a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control()</a>.</p>
 <p>At the moment it's only tested with a <b>3,3V</b> Arduino Pro Mini.</p>
 <h4>Diodes</h4>
