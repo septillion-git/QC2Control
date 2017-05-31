@@ -112,15 +112,23 @@ $(document).ready(function(){initNavTree('index.html','');});
 QC2Control circuit</div></div>
 <p> The wire color for a normal USB-cable is V<sub>BUS</sub>: Red Data+: Green Data-: White GND: Black</p>
 <p>You're free to pick any pin on the Arduino, just be sure to point to the right pins in <a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control()</a>.</p>
-<p>At the moment it's only tested with a <b>3,3V</b> Arduino Pro Mini.</p>
+<p>R5 is optional if a 3,3V Arduino is used. With R5 you can use both 3,3V and 5 Arduino's to control the Quick Charge 2.0 source.</p>
 <h4>Diodes</h4>
 <p>Although the regulator on a Arduino Pro Mini should be able to handle 12V (with a light load) some clones don't like 12V and release the <a href="https://en.wikipedia.org/wiki/Magic_smoke">magic smoke</a>. Adding two diodes will drop the voltage slightly (+-1,5V) so the Arduino can handle the voltage, even if it's set to 12V.</p>
 <p>Because the Arduino can only provide a small current the small and cheap 1N4148 will do. But any other (non-Schottky) should work like a 1N4007 etc.</p>
 <h2>Download and install</h2>
 <h3>Library manager</h3>
-<p>Will come!</p>
+<p><a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control</a> is available via Arduino IDE Library Manager.</p>
+<ol type="1">
+<li>Open the Arduino IDE (1.5 or above).</li>
+<li>In the tool-bar click Sketch -&gt; Include Library -&gt; Manage Libraries...</li>
+<li>Type in the search bar "QC2Control".</li>
+<li>The latest version of <a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control</a> should show.</li>
+<li>Click on it and click Install.</li>
+<li>Done!</li>
+</ol>
 <h3>GitHub</h3>
-<p>Latest release: <b>Release soon!</b></p>
+<p>Latest release: <b><a href="https://github.com/septillion-git/QC2Control/archive/v1.0.0.zip">v1.0.0</a></b></p>
 <ol type="1">
 <li>Download the latest release.</li>
 <li>Extract it to the <code>libraries</code> folder <b>inside</b> your Sketchbook. Default is <code>[user]\Arduino\libraries</code>.</li>
@@ -135,7 +143,7 @@ QC2Control circuit</div></div>
 <li>In the tool-bar click Sketch -&gt; Include Library -&gt; Manage Libraries...</li>
 <li>Type in the search bar "QC2Control".</li>
 <li>The <a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control</a> library should show.</li>
-<li>Click on it and click Update.</li>
+<li><b>Click on it</b> and click Update.</li>
 <li>Done!</li>
 </ol>
 <p>Alternatively you can download it from GitHub and simply unpack it over the current version (or remove the old version first).</p>
@@ -153,7 +161,7 @@ QC2Control circuit</div></div>
 <p>Return the last voltage that was set, so it will either 5, 9 or 12.</p>
 <h2>Full documentation</h2>
 <p>Full documentation of all the methods of this library can be found inside the library located in <code><a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control</a>\doc</code>. Just open <code><a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control</a>\doc\index.html</code> to see all methods of <a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control</a>.</p>
-<p>You can also view the documentation via <a href="https://htmlpreview.github.io/?https://github.com/septillion-git/QC2Control/blob/master/doc/index.html">GitHub HTML Preview</a>.</p>
+<p>You can also view the documentation via <a href="https://htmlpreview.github.io/?https://github.com/septillion-git/QC2Control/blob/v1.0.0/doc/index.html">GitHub HTML Preview</a>.</p>
 <p>This documentation is powered by <a href="http://www.doxygen.org/">Doxygen</a> and thus fully extracted from the source files. This README.md is also used as Main Page.</p>
 <h2>FAQ</h2>
 <h3>Can I control more the one Quick Charge source with a single Arduino?</h3>
