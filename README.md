@@ -19,7 +19,7 @@ GND: Black
 
 You're free to pick any pin on the Arduino, just be sure to point to the right pins in QC2Control().
 
-At the moment it's only tested with a **3,3V** Arduino Pro Mini.
+R5 is optional if a 3,3V Arduino is used. With R5 you can use both 3,3V and 5 Arduino's to control the Quick Charge 2.0 source.
 
 #### Diodes
 Although the regulator on a Arduino Pro Mini should be able to handle 12V (with a light load) some clones don't like 12V and release the [magic smoke](https://en.wikipedia.org/wiki/Magic_smoke). Adding two diodes will drop the voltage slightly (+-1,5V) so the Arduino can handle the voltage, even if it's set to 12V.
