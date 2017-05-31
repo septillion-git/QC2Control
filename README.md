@@ -28,7 +28,14 @@ Because the Arduino can only provide a small current the small and cheap 1N4148 
 
 ## Download and install
 ### Library manager
-Will come!
+QC2Control is available via Arduino IDE Library Manager.
+
+1.  Open the Arduino IDE (1.5 or above).
+2.  In the tool-bar click Sketch -> Include Library -> Manage Libraries...
+3.  Type in the search bar "QC2Control".
+4.  The latest version of QC2Control should show.
+5.  Click on it and click Install.
+6.  Done!
 
 ### GitHub
 Latest release: **[v1.0.0](https://github.com/septillion-git/QC2Control/archive/v1.0.0.zip)**
@@ -46,7 +53,7 @@ You can update to the latest version of the library in the Library Manager as we
 2.  In the tool-bar click Sketch -> Include Library -> Manage Libraries...
 3.  Type in the search bar "QC2Control".
 4.  The QC2Control library should show.
-5.  Click on it and click Update.
+5.  **Click on it** and click Update.
 6.  Done!
 
 Alternatively you can download it from GitHub and simply unpack it over the current version (or remove the old version first).
