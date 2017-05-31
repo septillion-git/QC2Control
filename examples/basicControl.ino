@@ -1,6 +1,6 @@
 #include <QC2Control.h>
 
-//Pin 4 for Data-
+//Pin 4 for Data+
 //Pin 5 for Data-
 //See How to connect in the documentation for more details.
 QC2Control quickCharge(4, 5);
