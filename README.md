@@ -29,7 +29,7 @@ You can update to the latest version of the library in the Library Manager as we
 1.  Open the Arduino IDE (1.5 or above).
 2.  In the tool-bar click Sketch -> Include Library -> Manage Libraries...
 3.  Type in the search bar "QC2Control".
-4.  The FadeLed library should show.
+4.  The QC2Control library should show.
 5.  Click on it and click Update.
 6.  Done!
 
@@ -72,7 +72,7 @@ void loop() {
 If you can, place the call to begin() (or setVoltage()) at the end of the setup(). The handshake needs a fixed time but that already starts when the QC 2.0 source (and thus the Arduino) is turned on. So by doing begin() last you can do stuff while waiting.
 
 ## Full documentation
-Full documentation of all the methods of this library can be found inside the library located in `QC2Control\doc`. Just open `QC2Control\doc\index.html` to see all methods of FadeLed. 
+Full documentation of all the methods of this library can be found inside the library located in `QC2Control\doc`. Just open `QC2Control\doc\index.html` to see all methods of QC2Control. 
 
 You can also view the documentation via [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/septillion-git/QC2Control/blob/master/doc/index.html).
 
