@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 QC2Control circuit</div></div>
 <p> The wire color for a normal USB-cable is V<sub>BUS</sub>: Red Data+: Green Data-: White GND: Black</p>
 <p>You're free to pick any pin on the Arduino, just be sure to point to the right pins in <a class="el" href="class_q_c2_control.html" title="Main class of the QC2Control-library. ">QC2Control()</a>.</p>
-<p>R5 is optional if a 3,3V Arduino is used. With R5 you can use both 3,3V and 5 Arduino's to control the Quick Charge 2.0 source.</p>
+<p>R5 is optional if a 3,3V Arduino is used. <em>With</em> R5 you can use both 3,3V and 5V Arduino's to control the Quick Charge 2.0 source.</p>
 <h4>Diodes</h4>
 <p>Although the regulator on a Arduino Pro Mini should be able to handle 12V (with a light load) some clones don't like 12V and release the <a href="https://en.wikipedia.org/wiki/Magic_smoke">magic smoke</a>. Adding two diodes will drop the voltage slightly (+-1,5V) so the Arduino can handle the voltage, even if it's set to 12V.</p>
 <p>Because the Arduino can only provide a small current the small and cheap 1N4148 will do. But any other (non-Schottky) should work like a 1N4007 etc.</p>
