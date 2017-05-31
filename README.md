@@ -8,7 +8,23 @@ All credit goes to [Hugatry's HackVlog](https://www.youtube.com/channel/UCHgeChD
 QC2Control makes it possible to set the voltage (even on the fly) of a Quick Charge 2.0 source like a mains charger or power bank. Possible voltages are 5V (USB default), 9V or 12V. The source needs to support the [Quick Charge 2.0](https://www.qualcomm.com/products/features/quick-charge) technology form [Qualcomm](https://www.qualcomm.com/) in order to work.
 
 ### How to connect?
-Diagram will come. For now, see video description of ["Set QuickCharge 2.0 PSU's Output Voltage With Arduino" (YouTube)](https://youtu.be/MldONoCgr20). It's the **new** two pin version.
+All you need to use four resistors and (optionally) two diodes.
+![QC2Control circuit](extras/circuit.png)
+
+The wire color for a normal USB-cable is  
+<span style="color: red">V<sub>BUS</sub>: Red</span>  
+<span style="color: green">Data+: Green</span>  
+<span style="color: grey">Data-: White</span>  
+<span style="color: black">GND: Black</span>
+
+You're free to pick any pin on the Arduino, just be sure to point to the right pins in QC2Control().
+
+At the moment it's only tested with a **3,3V** Arduino Pro Mini.
+
+#### Diodes
+Although the regulator on a Arduino Pro Mini should be able to handle 12V (with a light load) some clones don't like 12V and release the [magic smoke](https://en.wikipedia.org/wiki/Magic_smoke). Adding two diodes will drop the voltage slightly (+-1,5V) so the Arduino can handle the voltage, even if it's set to 12V.
+
+Because the Arduino can only provide a small current the small and cheap 1N4148 will do. But any other (non-Schottky) should work like a 1N4007 etc.
 
 ## Download and install
 ### Library manager
@@ -70,6 +86,19 @@ void loop() {
 **Please note**, delay() here is just used to demonstrate. Better not to stop the complete program with delay()'s.
 
 If you can, place the call to begin() (or setVoltage()) at the end of the setup(). The handshake needs a fixed time but that already starts when the QC 2.0 source (and thus the Arduino) is turned on. So by doing begin() last you can do stuff while waiting.
+
+### Methods
+#### QC2Control(byte DpPin, byte DmPin)
+Alright, not a method but the constructor. This will create a QC2Control-object to control the voltage of the Quick Charge 2.0 source. DpPin is the pin number for the Data+ side and DmPin is the pin number for the Data- side. See [**How to connect?**](#how-to-connect).
+
+#### void .begin()
+Just does the handshake with the Quick Charge 2.0 source so it will accept commands for different voltage. It's not mandatory to call begin(), if it's not called before setting a voltage the library will call begin() at that moment.
+
+#### void .setVoltage(byte volt), .set5V(), .set9V() and .set12V()
+Will simply set the voltage. Setting a different voltage than 5V, 9V or 12V with setVoltage() will result in a "save" 5V
+
+#### byte getVoltage()
+Return the last voltage that was set, so it will either 5, 9 or 12.
 
 ## Full documentation
 Full documentation of all the methods of this library can be found inside the library located in `QC2Control\doc`. Just open `QC2Control\doc\index.html` to see all methods of QC2Control. 
