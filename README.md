@@ -12,10 +12,10 @@ All you need to use four resistors and (optionally) two diodes.
 ![QC2Control circuit](extras/circuit.png)
 
 The wire color for a normal USB-cable is  
-<span style="color: red">V<sub>BUS</sub>: Red</span>  
-<span style="color: green">Data+: Green</span>  
-<span style="color: grey">Data-: White</span>  
-<span style="color: black">GND: Black</span>
+V<sub>BUS</sub>: Red  
+Data+: Green  
+Data-: White  
+GND: Black
 
 You're free to pick any pin on the Arduino, just be sure to point to the right pins in QC2Control().
 
