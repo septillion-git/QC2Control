@@ -8,7 +8,7 @@ All credit goes to [Hugatry's HackVlog](https://www.youtube.com/channel/UCHgeChD
 QC2Control makes it possible to set the voltage (even on the fly) of a Quick Charge 2.0 source like a mains charger or power bank. Possible voltages are 5V (USB default), 9V or 12V. The source needs to support the [Quick Charge 2.0](https://www.qualcomm.com/products/features/quick-charge) technology form [Qualcomm](https://www.qualcomm.com/) in order to work.
 
 ### How to connect?
-All you need to use four resistors and (optionally) two diodes.
+All you need to use five resistors and (optionally) two diodes.
 ![QC2Control circuit](extras/circuit.png)
 
 The wire color for a normal USB-cable is  
