@@ -16,7 +16,7 @@ Of course, to take advantage of this library, the source needs to support the [Q
 However, the library can also be used with a QC2.0 compatible charger if using only set5V(), set9V() and set12V().
 
 ## Differences between QC2Control and QC3Control
-QC3 chargers and battery packs should be backwards compatible with QC2, but I first had to adjust the resistor values compared to the ones in QC2Control. More information on [my blog](http://blog.deconinck.info/post/2017/08/09/Turning-a-Quick-Chtarge-3.0-charger-into-a-variable-voltage-power-supply).
+QC3 chargers and battery packs should be backwards compatible with QC2, but I first had to adjust the resistor values compared to the ones in QC2Control. More information on [my blog](http://blog.deconinck.info/post/2017/08/09/Turning-a-Quick-Charge-3.0-charger-into-a-variable-voltage-power-supply).
 
 Apart from that, the main protocol difference between QC2.0 and QC3.0 (class A) is the introduction of continuous voltages, plus the possibility to lower the voltage to 3.6V.
 
@@ -152,7 +152,7 @@ Note that these methods return the value the library requested, not the actual v
 ## Full documentation
 Full documentation of all the methods of this library can be found inside the library located in `QC3Control\doc`. Just open `QC3Control\doc\index.html` to see all methods of QC3Control. 
 
-You can also view the documentation via [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/vdeconinck/QC3Control/blob/v1.0.0/doc/index.html).
+You can also view the documentation via [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/vdeconinck/QC3Control/master/doc/index.html).
 
 This documentation is powered by [Doxygen](http://www.doxygen.org/) and thus fully extracted from the source files. This README.md is also used as Main Page.
 
