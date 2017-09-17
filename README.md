@@ -5,17 +5,17 @@ By Vincent Deconinck
 
 All credits go to :
 - [Hugatry's HackVlog](https://www.youtube.com/channel/UCHgeChD442K0ah-KxEg0PHw) because he came up with the idea and first code to control QC2. 
-- Timo Engelgeer (Septillion) who made a nice wrapper for Quick Charge 2.0: [QC2Control](https://github.com/septillion-git/QC2Control). The %QC3Control project is just a fork of QC2Control adapted for Quick Charge3 while retaining maximum compatibility so it can be used as a drop-in replacement.
+- Timo Engelgeer (Septillion) who made a nice wrapper for Quick Charge 2.0: [QC2Control](https://github.com/septillion-git/QC2Control). The QC3Control project is just a fork of QC2Control adapted for Quick Charge3 while retaining maximum compatibility so it can be used as a drop-in replacement.
 
 ## What does it do?
-%QC3Control makes it possible to set the voltage (even on the fly) of a Quick Charge 3.0 source like a mains charger or power bank by simulating the behaviour of a QC3 portable device. 
+QC3Control makes it possible to set the voltage (even on the fly) of a Quick Charge 3.0 source like a mains charger or power bank by simulating the behaviour of a QC3 portable device. 
 
 Currently, only QC3.0 class A (up to 12V) is supported. QC3.0 class B (up to 20V) should be a minor change, but due to the lack of hardware to test, the libary only targets class A for now. Consequently, possible voltages are 5V (USB default), 9V or 12V, plus any value between 3.6V and 12V obtained by 200mV steps from one of the 3 previous voltages. 
 
 Of course, to take advantage of this library, the source needs to support the [Quick Charge 3.0](https://www.qualcomm.com/products/features/quick-charge) technology form [Qualcomm](https://www.qualcomm.com/). 
 However, the library can also be used with a QC2.0 compatible charger if using only set5V(), set9V() and set12V().
 
-## Differences between QC2Control and %QC3Control
+## Differences between QC2Control and QC3Control
 QC3 chargers and battery packs should be backwards compatible with QC2, but I first had to adjust the resistor values compared to the ones in QC2Control. More information on [my blog](http://blog.deconinck.info/).
 
 Apart from that, the main protocol difference between QC2.0 and QC3.0 (class A) is the introduction of continuous voltages, plus the possibility to lower the voltage to 3.6V.
@@ -56,12 +56,12 @@ If you have a multi-port QC3 charger, a good alternative to those diodes is to p
 
 ## Download and install
 ### Library manager
-%QC3Control is available via Arduino IDE Library Manager.
+QC3Control is available via Arduino IDE Library Manager.
 
 1.  Open the Arduino IDE (1.5 or above).
 2.  In the tool-bar click Sketch -> Include Library -> Manage Libraries...
-3.  Type in the search bar "%QC3Control".
-4.  The latest version of %QC3Control should show.
+3.  Type in the search bar "QC3Control".
+4.  The latest version of QC3Control should show.
 5.  Click on it and click Install.
 6.  Done!
 
@@ -70,7 +70,7 @@ Latest release: **[v1.0.0](https://github.com/vdeconinck/QC3Control/archive/v1.0
 
 1. Download the latest release.
 2. Extract it to the `libraries` folder **inside** your Sketchbook. Default is `[user]\Arduino\libraries`. 
-3. Rename the folder to `%QC3Control` (remove version number).
+3. Rename the folder to `QC3Control` (remove version number).
 4. Restart the Arduino IDE if you had it open.
 5. Done!
 
@@ -79,8 +79,8 @@ You can update to the latest version of the library in the Library Manager as we
 
 1.  Open the Arduino IDE (1.5 or above).
 2.  In the tool-bar click Sketch -> Include Library -> Manage Libraries...
-3.  Type in the search bar "%QC3Control".
-4.  The %QC3Control library should show.
+3.  Type in the search bar "QC3Control".
+4.  The QC3Control library should show.
 5.  **Click on it** and click Update.
 6.  Done!
 
@@ -126,10 +126,10 @@ If you can, place the call to begin() (or setVoltage()) at the end of the setup(
 
 ### Constructors
 #### QC3Control(byte DpPin, byte DmPin)
-[QC2 or QC3 power source] This will create a %QC3Control object to control the voltage of the Quick Charge source when using the recommended "6-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the Data- side. See [**How to connect?**](#how-to-connect).
+[QC2 or QC3 power source] This will create a QC3Control object to control the voltage of the Quick Charge source when using the recommended "6-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the Data- side. See [**How to connect?**](#how-to-connect).
 
 #### QC3Control(byte DpPin, byte DmPin, byte DmGndPin)
-[QC2 or QC3 power source] This will create a %QC3Control object to control the voltage of the Quick Charge 3.0 source when using the legacy "5-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the upper resistor of the Data- side and DmGndPin is the pin number for the lower resistor of the Data- side. See [**How to connect?**](#how-to-connect).
+[QC2 or QC3 power source] This will create a QC3Control object to control the voltage of the Quick Charge 3.0 source when using the legacy "5-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the upper resistor of the Data- side and DmGndPin is the pin number for the lower resistor of the Data- side. See [**How to connect?**](#how-to-connect).
 
 ### Methods
 #### void .begin()
