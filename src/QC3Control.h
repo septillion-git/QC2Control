@@ -29,11 +29,11 @@
 class QC3Control{
   public:
     /**
-     *  @brief Makes an object to control a Quick Charge source with a "6-resistor" circuit
+     *  @brief Makes an object to control a Quick Charge source with a recommended "2-wire" circuit
      *  
      *  @details Makes it possible to set the voltage of the QC source to 5V, 9V or 12V (with a QC2.0 or later charger) 
      *  or to any supported voltage between 3.6V and 12V (with a QC3.0 or later charger).
-     *  Call this constructor if you are using a "6-resistor" circuit which only requires 2 Arduino pins. 
+     *  Call this constructor if you are using a recommended "2-wire" circuit. 
      *  See general description on how to wire it.
      *  
      *  @param [in] DpPin Data+ pin connected to the middle of the D+ 1K5-10K bridge via a 470R resistor 
@@ -42,11 +42,11 @@ class QC3Control{
     QC3Control(byte DpPin, byte DmPin);
     
     /**
-     *  @brief Makes an object to control a Quick Charge 3.0 source with a "5-resistor" circuit
+     *  @brief Makes an object to control a Quick Charge 3.0 source with a legacy "3-wire" circuit
      *  
      *  @details Makes it possible to set the voltage of the QC source to 5V, 9V or 12V (with a QC2.0 or later charger) 
      *  or to any supported voltage between 3.6V and 12V (with a QC3.0 or later charger).
-     *  Call this constructor if you are using a "5-resistor" circuit which requires 3 Arduino pins (try this if the "6-resistor" circuit fails). 
+     *  Call this constructor if you are using a legacy "3-wire" circuit (try this if the "2-wire" circuit fails). 
      *  See general description on how to wire it.
      *  
      *  @param [in] DpPin Data+ pin connected to the middle of the D+ 1K5-10K bridge via a 470R resistor 
@@ -180,8 +180,8 @@ class QC3Control{
   
   protected:
     const byte _DpPin; //!< Data+ pin connected to the middle of the D+ 1K5-10K bridge via a 470R resistor 
-    const byte _DmPin; //!< Data- pin connected either to the middle of the D- 1K5-10K bridge via a 470R resistor (in 6-resistor circuit), or to the top of the D- 1K5-10K bridge (in 5-resistor circuit)
-    const byte _DmGndPin; //!< Pin pin connected to the bottom of the D- 1K5-10K bridge in 5-resistor circuit. Must be 0 if using a 6-resistor circuit
+    const byte _DmPin; //!< Data- pin connected either to the middle of the D- 1K5-10K bridge via a 470R resistor (in recommended "2-wire" circuit), or to the top of the D- 1K5-10K bridge (in legacy "3-wire" circuit)
+    const byte _DmGndPin; //!< Pin pin connected to the bottom of the D- 1K5-10K bridge in legacy "3-wire" circuit. Must be 0 if using a recommended "2-wire" circuit
     
     bool _handshakeDone; //!< Is the handshake done?
     bool _continuousMode; //!< Are we in continuous adjustment (QC3) mode?
