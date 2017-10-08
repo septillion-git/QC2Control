@@ -29,11 +29,11 @@ Both circuits are supported by the library, but basically, I suggest you first t
 ### How to connect?
 As indicated above, the library supports the 2 following configurations. In all cases, all you need is a few resistors and (optionally) two diodes (see next section).
 
-a) Recommended "6-resistor" circuit.
+a) Recommended "2-wire" circuit.
 
 ![QC3Control recommended circuit](extras/recommended_circuit.png)
 
-b) Legacy "5-resistor" circuit: Apart from the values, it is similar to the QC2Control circuit but requires a third Arduino pin instead of GND on the D- divider. Not recommended unless you have issues with the "6-resistor" version 
+b) Legacy "3-wire" circuit: Apart from the values, it is similar to the QC2Control circuit but requires a third Arduino pin instead of GND on the D- divider. Not recommended unless you have issues with the "2-wire" version 
 
 ![QC3Control circuit](extras/legacy_circuit.png)
 
@@ -89,7 +89,7 @@ Alternatively you can download it from GitHub and simply unpack it over the curr
 ## Usage
 Just see this simple sketch (assuming the recommended circuit is used)
 ```C++
-#include "QC3Control.h"
+#include <QC3Control.h>
 
 //Pin 4 for Data+
 //Pin 5 for Data-
@@ -126,10 +126,10 @@ If you can, place the call to begin() (or setVoltage()) at the end of the setup(
 
 ### Constructors
 #### QC3Control(byte DpPin, byte DmPin)
-[QC2 or QC3 power source] This will create a QC3Control object to control the voltage of the Quick Charge source when using the recommended "6-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the Data- side. See [**How to connect?**](#how-to-connect).
+[QC2 or QC3 power source] This will create a QC3Control object to control the voltage of the Quick Charge source when using the recommended "2-wire" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the Data- side. See [**How to connect?**](#how-to-connect).
 
 #### QC3Control(byte DpPin, byte DmPin, byte DmGndPin)
-[QC2 or QC3 power source] This will create a QC3Control object to control the voltage of the Quick Charge 3.0 source when using the legacy "5-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the upper resistor of the Data- side and DmGndPin is the pin number for the lower resistor of the Data- side. See [**How to connect?**](#how-to-connect).
+[QC2 or QC3 power source] This will create a QC3Control object to control the voltage of the Quick Charge 3.0 source when using the legacy "3-wire" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the upper resistor of the Data- side and DmGndPin is the pin number for the lower resistor of the Data- side. See [**How to connect?**](#how-to-connect).
 
 ### Methods
 #### void .begin()
