@@ -23,7 +23,7 @@ void loop() {
   delay(1000);
   quickCharge.set5V();
   delay(1000);
-  quickCharge.setVoltage(6);
+  quickCharge.setMilliVoltage(6000);
   delay(1000);
   for (int i = 0; i < 10; i++) quickCharge.decrementVoltage();
   delay(1000);
