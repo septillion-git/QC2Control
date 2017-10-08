@@ -131,7 +131,7 @@ class QC3Control{
     /**
      *  @brief Set voltage to 5V
      *  
-     *  @return Sets the output of the QC source to 5V using discrete (QC2) mode.
+     *  @details Sets the output of the QC source to 5V using discrete (QC2) mode.
      *  
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
      */
@@ -141,7 +141,7 @@ class QC3Control{
     /**
      *  @brief Set voltage to 9V
      *  
-     *  @return Sets the output of the QC source to 9V using discrete (QC2) mode.
+     *  @details Sets the output of the QC source to 9V using discrete (QC2) mode.
      *  
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
      */
@@ -151,7 +151,7 @@ class QC3Control{
     /**
      *  @brief Set voltage to 12V
      *  
-     *  @return Sets the output of the QC source to 12V using discrete (QC2) mode.
+     *  @details Sets the output of the QC source to 12V using discrete (QC2) mode.
      *  
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
      */
