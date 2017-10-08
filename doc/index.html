@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title"><a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Set the voltage of a Quick Charge 3.0 (class A) source via Arduino.</p>
+<div class="textblock"><p>Set the voltage of a Quick Charge 3.0 source via Arduino.</p>
 <p>By Vincent Deconinck</p>
 <p>All credits go to :</p><ul>
 <li><a href="https://www.youtube.com/channel/UCHgeChD442K0ah-KxEg0PHw">Hugatry's HackVlog</a> because he came up with the idea and first code to control QC2.</li>
@@ -92,18 +92,20 @@ $(document).ready(function(){initNavTree('index.html','');});
 </ul>
 <h2>What does it do?</h2>
 <p><a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> makes it possible to set the voltage (even on the fly) of a Quick Charge 3.0 source like a mains charger or power bank by simulating the behaviour of a QC3 portable device.</p>
-<p>Currently, only QC3.0 class A (up to 12V) is supported. QC3.0 class B (up to 20V) should be a minor change, but due to the lack of hardware to test, the libary only targets class A for now. Consequently, possible voltages are 5V (USB default), 9V or 12V, plus any value between 3.6V and 12V obtained by 200mV steps from one of the 3 previous voltages.</p>
-<p>Of course, to take advantage of this library, the source needs to support the <a href="https://www.qualcomm.com/products/features/quick-charge">Quick Charge 3.0</a> technology form <a href="https://www.qualcomm.com/">Qualcomm</a>. However, the library can also be used with a QC2.0 compatible charger if using only set5V(), set9V() and set12V().</p>
+<p>Of course, to take advantage of this library, the source needs to support the <a href="https://www.qualcomm.com/products/features/quick-charge">Quick Charge 3.0</a> technology form <a href="https://www.qualcomm.com/">Qualcomm</a>. However, the library can also be used with a QC2.0 compatible charger if using only set5V(), set9V(), set12V(), or setVoltage(5), setVoltage(9) or setVoltage(12).</p>
 <h2>Differences between QC2Control and <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a></h2>
 <p>QC3 chargers and battery packs should be backwards compatible with QC2, but I first had to adjust the resistor values compared to the ones in QC2Control. More information on <a href="http://blog.deconinck.info/post/2017/08/09/Turning-a-Quick-Charge-3.0-charger-into-a-variable-voltage-power-supply">my blog</a>.</p>
-<p>Apart from that, the main protocol difference between QC2.0 and QC3.0 (class A) is the introduction of continuous voltages, plus the possibility to lower the voltage to 3.6V.</p>
+<p>Apart from that, the main protocol difference between QC2.0 and QC3.0 is the introduction of continuous voltages, plus the possibility to lower the voltage to 3.6V.</p>
 <p>To reach QC3.0 continuous mode, D- must be set high, which can be achieved two ways:</p><ul>
 <li>either by slightly modifying the QC2Control circuit and "disconnecting" the bottom resistor of the D- divider when needed. In that case, the divider acts as a pull up for USB D-. I call this circuit "legacy".</li>
 <li>or by using a new circuit which basically duplicates the D+ configuration to the D- side: a divider between VCC and GND plus a third resistor to the Arduino "DM" pin. In that case, outputting a HIGH level to the third resistor, a voltage of 3.3V or more can be set on USB D-. This is the recommended circuit as it does not require an additional Arduino pin.</li>
 </ul>
 <p>Both circuits are supported by the library, but basically, I suggest you first try the recommended circuit, and if your QC3 charger refuses to generate anything else than 5V, then try with the legacy circuit, changing the constructor in the code accordingly.</p>
+<h2>Class A vs Class B</h2>
+<p>QC3.0 class A is mostly used for phone chargers and outputs up to 12V. It is supported by <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> and fully tested. Possible voltages are 5V (USB default), 9V and 12V, plus any value between 3.6V and 12V obtained by 200mV steps from 5V (or from the previous voltage reached using setMilliVoltage()).</p>
+<p>QC3.0 class B is more targeted at laptops and can output up to 20V. <b>WARNING:</b> this means that the Arduino will be <b>destroyed</b> if powered from the USB output voltage using one of the circuits below, and the use of a separate USB output, power supply or voltage regulator is mandatory. Apart from that, it is now supported by <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> although testing was limited, and is enabled by calling begin(true). Possible voltages are then 5V (USB default), 9V, 12V and 20V, plus any value between 3.6V and 20V obtained by 200mV steps from 5V (or from the previous voltage reached using setMilliVoltage()).</p>
 <h3>How to connect?</h3>
-<p>As indicated above, the library supports the 2 following configurations. In all cases, all you need is a few resistors and (optionally) two diodes (see next section).</p>
+<p>As indicated above, the library supports the 2 following configurations. In all cases, all you need is a few resistors.</p>
 <p>a) Recommended "2-wire" circuit.</p>
 <div class="image">
 <img src="recommended_circuit.png" alt="recommended_circuit.png"/>
@@ -121,11 +123,11 @@ QC3Control circuit</div></div>
 <li>GND: Black</li>
 </ul>
 <p>You're free to pick any pin on the Arduino, just be sure to point to the right pins in <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control()</a>.</p>
-<h4>Diodes</h4>
-<p>Although the regulator on a Arduino Pro Mini should be able to handle 12V (with a light load) some clones don't like 12V and release the <a href="https://en.wikipedia.org/wiki/Magic_smoke">magic smoke</a>. Adding two diodes will drop the voltage slightly (about 1.5V) so the Arduino can handle the voltage, even if it's set to 12V.</p>
-<p>Because the Arduino can only provide a small current the small and cheap 1N4148 will do. But any other (non-Schottky) should work like a 1N4007 etc.</p>
-<p>Warning though: Please note that if you add the diodes, you may not be able to reach lower voltages allowed by the QC3 specification (down to 3.6V) as the Arduino may not receive enough voltage.</p>
-<p>If you have a multi-port QC3 charger, a good alternative to those diodes is to power the Arduino from one (possibily non-QC) port with 5V and use it to control the voltage of the another (QC3) port. In that case, don't forget to connect the GND of both ports together (but <b>NOT</b> their VCCs of cource).</p>
+<h3>Powering the Arduino</h3>
+<p>Arduino's Vin recommended voltage is 7-12V (absolute maximum rating 6-20V) while the voltage range supported by <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> (particularly in Class B) extends to 3.6-20V (compared to QC2 class A's range of 5-12V).</p>
+<p>Depending on your required output voltage range, it may be possible to power the Arduino from the output voltage it is controlling as proposed in the QC2Control project (note though that feeding 5V to Vin is already outside of the Arduino specification). A clever use of diodes or other discrete components may work in your particular case.</p>
+<p>Alternately, you can add a buck-boost converter which will be able to power the Arduino based on the full QC3 range, but you will probably end up with a solution generally more expensive and more complex than designing your own variable power supply in the first place.</p>
+<p>The recommended alternative is to select a multi-port QC3 charger, to use one QC3 port as your main output and to power the Arduino's 5V pin from another (possibily non-QC) port. In that case, don't forget to connect the GND of both ports together (but <b>NOT</b> their VCCs of cource).</p>
 <h2>Download and install</h2>
 <h3>Library manager</h3>
 <p><a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> is available via Arduino IDE Library Manager.</p>

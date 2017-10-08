@@ -98,22 +98,25 @@ $(document).ready(function(){initNavTree('class_q_c3_control.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac29cca4304315f49c5e38c03c15fc7c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#ac29cca4304315f49c5e38c03c15fc7c2">QC3Control</a> (byte DpPin, byte DmPin)</td></tr>
-<tr class="memdesc:ac29cca4304315f49c5e38c03c15fc7c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an object to control a Quick Charge source with a "6-resistor" circuit.  <a href="#ac29cca4304315f49c5e38c03c15fc7c2">More...</a><br /></td></tr>
+<tr class="memdesc:ac29cca4304315f49c5e38c03c15fc7c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an object to control a Quick Charge source with a recommended "2-wire" circuit.  <a href="#ac29cca4304315f49c5e38c03c15fc7c2">More...</a><br /></td></tr>
 <tr class="separator:ac29cca4304315f49c5e38c03c15fc7c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b87bfe1cf5233c5c009791bf96b03f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a4b87bfe1cf5233c5c009791bf96b03f4">QC3Control</a> (byte DpPin, byte DmPin, byte DmGndPin)</td></tr>
-<tr class="memdesc:a4b87bfe1cf5233c5c009791bf96b03f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an object to control a Quick Charge 3.0 source with a "5-resistor" circuit.  <a href="#a4b87bfe1cf5233c5c009791bf96b03f4">More...</a><br /></td></tr>
+<tr class="memdesc:a4b87bfe1cf5233c5c009791bf96b03f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an object to control a Quick Charge 3.0 source with a legacy "3-wire" circuit.  <a href="#a4b87bfe1cf5233c5c009791bf96b03f4">More...</a><br /></td></tr>
 <tr class="separator:a4b87bfe1cf5233c5c009791bf96b03f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30175b4c85215d2e2a84120e97a15176"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176">begin</a> ()</td></tr>
-<tr class="memdesc:a30175b4c85215d2e2a84120e97a15176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the handshake with the QC source.  <a href="#a30175b4c85215d2e2a84120e97a15176">More...</a><br /></td></tr>
+<tr class="memdesc:a30175b4c85215d2e2a84120e97a15176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the handshake with the QC source in "class A" (up to 12V).  <a href="#a30175b4c85215d2e2a84120e97a15176">More...</a><br /></td></tr>
 <tr class="separator:a30175b4c85215d2e2a84120e97a15176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ec6338cec83dc1479b0ef5bdc4e21b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a87ec6338cec83dc1479b0ef5bdc4e21b">begin</a> (bool classB)</td></tr>
+<tr class="memdesc:a87ec6338cec83dc1479b0ef5bdc4e21b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the handshake with the QC source, specifying whether the source is "class B" compliant (up to 20V) or not.  <a href="#a87ec6338cec83dc1479b0ef5bdc4e21b">More...</a><br /></td></tr>
+<tr class="separator:a87ec6338cec83dc1479b0ef5bdc4e21b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e21b18ae8352e5ca91b81222fd47f14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14">setVoltage</a> (double volt)</td></tr>
-<tr class="memdesc:a3e21b18ae8352e5ca91b81222fd47f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the desired voltage of the QC source.  <a href="#a3e21b18ae8352e5ca91b81222fd47f14">More...</a><br /></td></tr>
+<tr class="memdesc:a3e21b18ae8352e5ca91b81222fd47f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">(deprecated - use <a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage()</a>) Sets the desired voltage of the QC source.  <a href="#a3e21b18ae8352e5ca91b81222fd47f14">More...</a><br /></td></tr>
 <tr class="separator:a3e21b18ae8352e5ca91b81222fd47f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a720860f00d897cb65aeceabccb2efdd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7">setMilliVoltage</a> (unsigned int milliVolt)</td></tr>
 <tr class="memdesc:a720860f00d897cb65aeceabccb2efdd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the desired voltage of the QC3.0 source.  <a href="#a720860f00d897cb65aeceabccb2efdd7">More...</a><br /></td></tr>
 <tr class="separator:a720860f00d897cb65aeceabccb2efdd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa28b3efc2a2b739898814394e0ce9be9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#aa28b3efc2a2b739898814394e0ce9be9">getVoltage</a> ()</td></tr>
-<tr class="memdesc:aa28b3efc2a2b739898814394e0ce9be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the voltage that the charger is supposed to currently provide.  <a href="#aa28b3efc2a2b739898814394e0ce9be9">More...</a><br /></td></tr>
+<tr class="memdesc:aa28b3efc2a2b739898814394e0ce9be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">(deprecated - use <a class="el" href="class_q_c3_control.html#a93887f1365f5a06f60e897ede4e12e36" title="Return the voltage that the charger is supposed to currently provide. ">getMilliVoltage()</a>) Return the voltage that the charger is supposed to currently provide.  <a href="#aa28b3efc2a2b739898814394e0ce9be9">More...</a><br /></td></tr>
 <tr class="separator:aa28b3efc2a2b739898814394e0ce9be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93887f1365f5a06f60e897ede4e12e36"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a93887f1365f5a06f60e897ede4e12e36">getMilliVoltage</a> ()</td></tr>
 <tr class="memdesc:a93887f1365f5a06f60e897ede4e12e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the voltage that the charger is supposed to currently provide.  <a href="#a93887f1365f5a06f60e897ede4e12e36">More...</a><br /></td></tr>
@@ -127,6 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada380905bab8bd95bde52b4790cddd8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a">set12V</a> ()</td></tr>
 <tr class="memdesc:ada380905bab8bd95bde52b4790cddd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set voltage to 12V.  <a href="#ada380905bab8bd95bde52b4790cddd8a">More...</a><br /></td></tr>
 <tr class="separator:ada380905bab8bd95bde52b4790cddd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27bb8bc11dc13d2aa308e408f027f7e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a27bb8bc11dc13d2aa308e408f027f7e7">set20V</a> ()</td></tr>
+<tr class="memdesc:a27bb8bc11dc13d2aa308e408f027f7e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set voltage to 20V.  <a href="#a27bb8bc11dc13d2aa308e408f027f7e7">More...</a><br /></td></tr>
+<tr class="separator:a27bb8bc11dc13d2aa308e408f027f7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe2212c6e95f18f0c6d40dd9ea9393ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#abe2212c6e95f18f0c6d40dd9ea9393ff">incrementVoltage</a> ()</td></tr>
 <tr class="memdesc:abe2212c6e95f18f0c6d40dd9ea9393ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment the desired voltage of the QC3.0 source by 200mV.  <a href="#abe2212c6e95f18f0c6d40dd9ea9393ff">More...</a><br /></td></tr>
 <tr class="separator:abe2212c6e95f18f0c6d40dd9ea9393ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,11 +172,11 @@ const byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <tr class="separator:a3f7e5d74c60f18bcc7da4b106f8f5c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2226968e8f22096d02b7148e00e303"><td class="memItemLeft" align="right" valign="top"><a id="a8f2226968e8f22096d02b7148e00e303"></a>
 const byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a8f2226968e8f22096d02b7148e00e303">_DmPin</a></td></tr>
-<tr class="memdesc:a8f2226968e8f22096d02b7148e00e303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data- pin connected either to the middle of the D- 1K5-10K bridge via a 470R resistor (in 6-resistor circuit), or to the top of the D- 1K5-10K bridge (in 5-resistor circuit) <br /></td></tr>
+<tr class="memdesc:a8f2226968e8f22096d02b7148e00e303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data- pin connected either to the middle of the D- 1K5-10K bridge via a 470R resistor (in recommended "2-wire" circuit), or to the top of the D- 1K5-10K bridge (in legacy "3-wire" circuit) <br /></td></tr>
 <tr class="separator:a8f2226968e8f22096d02b7148e00e303"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7656a51daefa96576feda772fd65a2e0"><td class="memItemLeft" align="right" valign="top"><a id="a7656a51daefa96576feda772fd65a2e0"></a>
 const byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a7656a51daefa96576feda772fd65a2e0">_DmGndPin</a></td></tr>
-<tr class="memdesc:a7656a51daefa96576feda772fd65a2e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin pin connected to the bottom of the D- 1K5-10K bridge in 5-resistor circuit. Must be 0 if using a 6-resistor circuit. <br /></td></tr>
+<tr class="memdesc:a7656a51daefa96576feda772fd65a2e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin pin connected to the bottom of the D- 1K5-10K bridge in legacy "3-wire" circuit. Must be 0 if using a recommended "2-wire" circuit. <br /></td></tr>
 <tr class="separator:a7656a51daefa96576feda772fd65a2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab524f812e4fe2baaee63bba0b3209308"><td class="memItemLeft" align="right" valign="top"><a id="ab524f812e4fe2baaee63bba0b3209308"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#ab524f812e4fe2baaee63bba0b3209308">_handshakeDone</a></td></tr>
@@ -180,6 +186,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a7b375b93f2e927d054dbdcb0e5fe206b">_continuousMode</a></td></tr>
 <tr class="memdesc:a7b375b93f2e927d054dbdcb0e5fe206b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Are we in continuous adjustment (QC3) mode? <br /></td></tr>
 <tr class="separator:a7b375b93f2e927d054dbdcb0e5fe206b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cea62881bea323c40923c0beda69b4f"><td class="memItemLeft" align="right" valign="top"><a id="a5cea62881bea323c40923c0beda69b4f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a5cea62881bea323c40923c0beda69b4f">_classB</a></td></tr>
+<tr class="memdesc:a5cea62881bea323c40923c0beda69b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do we have a class B QC source (up to 20V) ? <br /></td></tr>
+<tr class="separator:a5cea62881bea323c40923c0beda69b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9924a562f7954a8f4575a96391789df3"><td class="memItemLeft" align="right" valign="top"><a id="a9924a562f7954a8f4575a96391789df3"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c3_control.html#a9924a562f7954a8f4575a96391789df3">_milliVoltNow</a></td></tr>
 <tr class="memdesc:a9924a562f7954a8f4575a96391789df3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltage currently set (in mV). Using the word "now" instead of "current" to prevent confusion between "current" and "voltage" :-) <br /></td></tr>
@@ -188,7 +198,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main class of the QC3Control-library. </p>
 <p>The QC3Control-class includes all the functions to easily set the voltage of a Quick Charge 3.0 source..</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage(unsigned int)</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac29cca4304315f49c5e38c03c15fc7c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac29cca4304315f49c5e38c03c15fc7c2">&#9670;&nbsp;</a></span>QC3Control() <span class="overload">[1/2]</span></h2>
@@ -216,8 +226,8 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 
-<p>Makes an object to control a Quick Charge source with a "6-resistor" circuit. </p>
-<p>Makes it possible to set the voltage of the QC source to 5V, 9V or 12V (with a QC2.0 or later charger) or to any supported voltage between 3.6V and 12V (with a QC3.0 or later charger). Call this constructor if you are using a "6-resistor" circuit which only requires 2 Arduino pins. See general description on how to wire it.</p>
+<p>Makes an object to control a Quick Charge source with a recommended "2-wire" circuit. </p>
+<p>Makes it possible to set the voltage of the QC source to 5V, 9V or 12V (with a QC2.0 or later charger) or to any supported voltage between 3.6V and 12V (with a QC3.0 or later charger). Call this constructor if you are using a recommended "2-wire" circuit. See general description on how to wire it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">DpPin</td><td>Data+ pin connected to the middle of the D+ 1K5-10K bridge via a 470R resistor </td></tr>
@@ -260,8 +270,8 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 
-<p>Makes an object to control a Quick Charge 3.0 source with a "5-resistor" circuit. </p>
-<p>Makes it possible to set the voltage of the QC source to 5V, 9V or 12V (with a QC2.0 or later charger) or to any supported voltage between 3.6V and 12V (with a QC3.0 or later charger). Call this constructor if you are using a "5-resistor" circuit which requires 3 Arduino pins (try this if the "6-resistor" circuit fails). See general description on how to wire it.</p>
+<p>Makes an object to control a Quick Charge 3.0 source with a legacy "3-wire" circuit. </p>
+<p>Makes it possible to set the voltage of the QC source to 5V, 9V or 12V (with a QC2.0 or later charger) or to any supported voltage between 3.6V and 12V (with a QC3.0 or later charger). Call this constructor if you are using a legacy "3-wire" circuit (try this if the "2-wire" circuit fails). See general description on how to wire it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">DpPin</td><td>Data+ pin connected to the middle of the D+ 1K5-10K bridge via a 470R resistor </td></tr>
@@ -275,7 +285,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a30175b4c85215d2e2a84120e97a15176"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30175b4c85215d2e2a84120e97a15176">&#9670;&nbsp;</a></span>begin()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a30175b4c85215d2e2a84120e97a15176">&#9670;&nbsp;</a></span>begin() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -289,10 +299,33 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
       </table>
 </div><div class="memdoc">
 
-<p>Starts the handshake with the QC source. </p>
-<p>A handshake is needed to be able to set the voltage. <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> may be left out, in which case the first method modifying the voltage will silently call <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>.</p>
-<p><a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> is <b>blocking code</b>. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time. But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> (or a call to <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a>) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a>, <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a> </dd></dl>
+<p>Starts the handshake with the QC source in "class A" (up to 12V). </p>
+<p>A handshake is needed to be able to set the voltage. <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> may be left out, in which case the first method modifying the voltage will silently call <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>.</p>
+<p><a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> is <b>blocking code</b>. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time. But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> (or a call to one of the setXXX() functions) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a87ec6338cec83dc1479b0ef5bdc4e21b" title="Starts the handshake with the QC source, specifying whether the source is &quot;class B&quot; compliant (up to ...">begin(bool)</a>, <a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage(unsigned int)</a>, <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a87ec6338cec83dc1479b0ef5bdc4e21b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87ec6338cec83dc1479b0ef5bdc4e21b">&#9670;&nbsp;</a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QC3Control::begin </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>classB</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the handshake with the QC source, specifying whether the source is "class B" compliant (up to 20V) or not. </p>
+<p>A handshake is needed to be able to set the voltage. <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> may be left out, in which case the first method modifying the voltage will silently call begin(false).</p>
+<p><a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> is <b>blocking code</b>. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time. But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> (or a call to one of the setXXX() functions) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>, <a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage(unsigned int)</a>, <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a>, <a class="el" href="class_q_c3_control.html#a27bb8bc11dc13d2aa308e408f027f7e7" title="Set voltage to 20V. ">set20V()</a> </dd></dl>
 
 </div>
 </div>
@@ -313,7 +346,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>Decrement the desired voltage of the QC3.0 source by 200mV. </p>
 <p>Will request a decrement of the voltage by 200mV. Performing the decrement request when the minimum value is already reached has no effect.</p>
-<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#ab157dcf761d9cb0f6eb33898becdd9c8" title="Decrement the desired voltage of the QC3.0 source by 200mV. ">decrementVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> to do the handshake, then the voltage will be decremented starting from 5V </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#ab157dcf761d9cb0f6eb33898becdd9c8" title="Decrement the desired voltage of the QC3.0 source by 200mV. ">decrementVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake, then the voltage will be decremented starting from 5V </dd></dl>
 
 </div>
 </div>
@@ -343,7 +376,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>Return the voltage that the charger is supposed to currently provide. </p>
 <p>Same as getVoltage, but returns an integer value in milliVolts</p>
 <dl class="section note"><dt>Note</dt><dd>The library has no notion if the voltage is really set. It just tries to set it but if you just start it all of a QC3.0 source it should set the correct voltage.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#aa28b3efc2a2b739898814394e0ce9be9" title="Return the voltage that the charger is supposed to currently provide. ">getVoltage()</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#aa28b3efc2a2b739898814394e0ce9be9" title="(deprecated - use getMilliVoltage()) Return the voltage that the charger is supposed to currently pro...">getVoltage()</a></dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The voltage that the charger is supposed to currently provide, in milliVolt </dd></dl>
 
 </div>
@@ -371,7 +404,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>Return the voltage that the charger is supposed to currently provide. </p>
+<p>(deprecated - use <a class="el" href="class_q_c3_control.html#a93887f1365f5a06f60e897ede4e12e36" title="Return the voltage that the charger is supposed to currently provide. ">getMilliVoltage()</a>) Return the voltage that the charger is supposed to currently provide. </p>
 <p>This will be a value between 3.6 and 12V.</p>
 <dl class="section note"><dt>Note</dt><dd>The library has no feedback if that voltage is actually provided. It just takes note of the operations requested to the charger and computes the voltage that the charger is supposed to output now.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a93887f1365f5a06f60e897ede4e12e36" title="Return the voltage that the charger is supposed to currently provide. ">getMilliVoltage()</a></dd></dl>
@@ -396,7 +429,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>Increment the desired voltage of the QC3.0 source by 200mV. </p>
 <p>Will request an increment of the voltage by 200mV. Performing the increment request when the maximum value is already reached has no effect.</p>
-<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#abe2212c6e95f18f0c6d40dd9ea9393ff" title="Increment the desired voltage of the QC3.0 source by 200mV. ">incrementVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> to do the handshake, then the voltage will be incremented starting from 5V </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#abe2212c6e95f18f0c6d40dd9ea9393ff" title="Increment the desired voltage of the QC3.0 source by 200mV. ">incrementVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake, then the voltage will be incremented starting from 5V </dd></dl>
 
 </div>
 </div>
@@ -416,8 +449,29 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Set voltage to 12V. </p>
-<dl class="section return"><dt>Returns</dt><dd>Sets the output of the QC source to 12V using discrete (QC2) mode.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> to do the handshake. </dd></dl>
+<p>Sets the output of the QC source to 12V using discrete (QC2) mode.</p>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake. </dd></dl>
+
+</div>
+</div>
+<a id="a27bb8bc11dc13d2aa308e408f027f7e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27bb8bc11dc13d2aa308e408f027f7e7">&#9670;&nbsp;</a></span>set20V()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QC3Control::set20V </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set voltage to 20V. </p>
+<p>Sets the output of the QC Class B source to 20V using discrete mode.</p>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a27bb8bc11dc13d2aa308e408f027f7e7" title="Set voltage to 20V. ">set20V()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake. </dd></dl>
 
 </div>
 </div>
@@ -437,8 +491,8 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Set voltage to 5V. </p>
-<dl class="section return"><dt>Returns</dt><dd>Sets the output of the QC source to 5V using discrete (QC2) mode.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> to do the handshake. </dd></dl>
+<p>Sets the output of the QC source to 5V using discrete (QC2) mode.</p>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake. </dd></dl>
 
 </div>
 </div>
@@ -458,8 +512,8 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Set voltage to 9V. </p>
-<dl class="section return"><dt>Returns</dt><dd>Sets the output of the QC source to 9V using discrete (QC2) mode.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> to do the handshake. </dd></dl>
+<p>Sets the output of the QC source to 9V using discrete (QC2) mode.</p>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake. </dd></dl>
 
 </div>
 </div>
@@ -480,13 +534,13 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Sets the desired voltage of the QC3.0 source. </p>
-<p>Will always set the passed voltage using continuous (QC3) mode discrete (QC2) mode (even for 5V, 9V and 12V). To force usage of discrete (QC2) mode, please use <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a> or <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a>;</p>
-<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> to do the handshake. </dd>
+<p>Will always set the passed voltage using continuous (QC3) mode (even for 5V, 9V, 12V and 20V). To force usage of discrete (QC2) mode, please use <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a> or <a class="el" href="class_q_c3_control.html#a27bb8bc11dc13d2aa308e408f027f7e7" title="Set voltage to 20V. ">set20V()</a>;</p>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake. </dd>
 <dd>
 Setting an unreachable voltage will result in the closest supported voltage being set. </dd>
 <dd>
 Calling this method on a QC2 charger will not work.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a>, <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">milliVolt</td><td>The desired voltage in mV (between 3600mV and 12000mV). </td></tr>
@@ -512,9 +566,9 @@ Calling this method on a QC2 charger will not work.</dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the desired voltage of the QC source. </p>
-<p>Will set the passed voltage either using discrete (QC2) mode for 5V, 9V and 12V, or using continuous (QC3) mode for all other values.</p>
-<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="Sets the desired voltage of the QC source. ">setVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source. ">begin()</a> to do the handshake. </dd>
+<p>(deprecated - use <a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage()</a>) Sets the desired voltage of the QC source. </p>
+<p>Will set the passed voltage either using discrete (QC2) mode for 5V, 9V and 12V (for backwards compatibility with QC2Control API), or using continuous (QC3) mode for all other values. Please use <a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage()</a> to avoid this behaviour.</p>
+<dl class="section note"><dt>Note</dt><dd>If no handshake has been done (via <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a>) with the QC source, the first call to <a class="el" href="class_q_c3_control.html#a3e21b18ae8352e5ca91b81222fd47f14" title="(deprecated - use setMilliVoltage()) Sets the desired voltage of the QC source. ">setVoltage()</a> will result in a call to <a class="el" href="class_q_c3_control.html#a30175b4c85215d2e2a84120e97a15176" title="Starts the handshake with the QC source in &quot;class A&quot; (up to 12V). ">begin()</a> to do the handshake. </dd>
 <dd>
 Setting an unreachable voltage will result in the closest supported voltage being set. </dd>
 <dd>
@@ -525,7 +579,7 @@ Calling this method on a QC2 charger will only work for 5V, 9V or 12V.</dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage()</a>, <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c3_control.html#a720860f00d897cb65aeceabccb2efdd7" title="Sets the desired voltage of the QC3.0 source. ">setMilliVoltage(unsigned int)</a>, <a class="el" href="class_q_c3_control.html#a8414b4bad9c8b2f6917f4d1439861a2c" title="Set voltage to 5V. ">set5V()</a>, <a class="el" href="class_q_c3_control.html#a2d521431b486b8efa40785f7acbf6bca" title="Set voltage to 9V. ">set9V()</a>, <a class="el" href="class_q_c3_control.html#ada380905bab8bd95bde52b4790cddd8a" title="Set voltage to 12V. ">set12V()</a> </dd></dl>
 
 </div>
 </div>

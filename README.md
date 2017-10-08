@@ -1,5 +1,5 @@
 # QC3Control
-Set the voltage of a Quick Charge 3.0 (class A) source via Arduino.  
+Set the voltage of a Quick Charge 3.0 source via Arduino.  
 
 By Vincent Deconinck
 
@@ -10,15 +10,13 @@ All credits go to :
 ## What does it do?
 QC3Control makes it possible to set the voltage (even on the fly) of a Quick Charge 3.0 source like a mains charger or power bank by simulating the behaviour of a QC3 portable device. 
 
-Currently, only QC3.0 class A (up to 12V) is supported. QC3.0 class B (up to 20V) should be a minor change, but due to the lack of hardware to test, the libary only targets class A for now. Consequently, possible voltages are 5V (USB default), 9V or 12V, plus any value between 3.6V and 12V obtained by 200mV steps from one of the 3 previous voltages. 
-
 Of course, to take advantage of this library, the source needs to support the [Quick Charge 3.0](https://www.qualcomm.com/products/features/quick-charge) technology form [Qualcomm](https://www.qualcomm.com/). 
-However, the library can also be used with a QC2.0 compatible charger if using only set5V(), set9V() and set12V().
+However, the library can also be used with a QC2.0 compatible charger if using only set5V(), set9V(), set12V(), or setVoltage(5), setVoltage(9) or setVoltage(12).
 
 ## Differences between QC2Control and QC3Control
 QC3 chargers and battery packs should be backwards compatible with QC2, but I first had to adjust the resistor values compared to the ones in QC2Control. More information on [my blog](http://blog.deconinck.info/post/2017/08/09/Turning-a-Quick-Charge-3.0-charger-into-a-variable-voltage-power-supply).
 
-Apart from that, the main protocol difference between QC2.0 and QC3.0 (class A) is the introduction of continuous voltages, plus the possibility to lower the voltage to 3.6V.
+Apart from that, the main protocol difference between QC2.0 and QC3.0 is the introduction of continuous voltages, plus the possibility to lower the voltage to 3.6V.
 
 To reach QC3.0 continuous mode, D- must be set high, which can be achieved two ways:
 - either by slightly modifying the QC2Control circuit and "disconnecting" the bottom resistor of the D- divider when needed. In that case, the divider acts as a pull up for USB D-. I call this circuit "legacy".
@@ -26,8 +24,13 @@ To reach QC3.0 continuous mode, D- must be set high, which can be achieved two w
 
 Both circuits are supported by the library, but basically, I suggest you first try the recommended circuit, and if your QC3 charger refuses to generate anything else than 5V, then try with the legacy circuit, changing the constructor in the code accordingly.
 
+## Class A vs Class B
+QC3.0 class A is mostly used for phone chargers and outputs up to 12V. It is supported by QC3Control and fully tested. Possible voltages are 5V (USB default), 9V and 12V, plus any value between 3.6V and 12V obtained by 200mV steps from 5V (or from the previous voltage reached using setMilliVoltage()). 
+
+QC3.0 class B is more targeted at laptops and can output up to 20V. **WARNING:** this means that the Arduino will be **destroyed** if powered from the USB output voltage using one of the circuits below, and the use of a separate USB output, power supply or voltage regulator is mandatory. Apart from that, it is now supported by QC3Control although testing was limited, and is enabled by calling begin(true). Possible voltages are then 5V (USB default), 9V, 12V and 20V, plus any value between 3.6V and 20V obtained by 200mV steps from 5V (or from the previous voltage reached using setMilliVoltage()). 
+
 ### How to connect?
-As indicated above, the library supports the 2 following configurations. In all cases, all you need is a few resistors and (optionally) two diodes (see next section).
+As indicated above, the library supports the 2 following configurations. In all cases, all you need is a few resistors.
 
 a) Recommended "2-wire" circuit.
 
@@ -45,14 +48,14 @@ The wire color for a normal USB-cable is:
 
 You're free to pick any pin on the Arduino, just be sure to point to the right pins in QC3Control().
 
-#### Diodes
-Although the regulator on a Arduino Pro Mini should be able to handle 12V (with a light load) some clones don't like 12V and release the [magic smoke](https://en.wikipedia.org/wiki/Magic_smoke). Adding two diodes will drop the voltage slightly (about 1.5V) so the Arduino can handle the voltage, even if it's set to 12V.
+### Powering the Arduino
+Arduino's Vin recommended voltage is 7-12V (absolute maximum rating 6-20V) while the voltage range supported by QC3Control (particularly in Class B) extends to 3.6-20V (compared to QC2 class A's range of 5-12V). 
 
-Because the Arduino can only provide a small current the small and cheap 1N4148 will do. But any other (non-Schottky) should work like a 1N4007 etc.
+Depending on your required output voltage range, it may be possible to power the Arduino from the output voltage it is controlling as proposed in the QC2Control project (note though that feeding 5V to Vin is already outside of the Arduino specification). A clever use of diodes or other discrete components may work in your particular case.
 
-Warning though: Please note that if you add the diodes, you may not be able to reach lower voltages allowed by the QC3 specification (down to 3.6V) as the Arduino may not receive enough voltage.
- 
-If you have a multi-port QC3 charger, a good alternative to those diodes is to power the Arduino from one (possibily non-QC) port with 5V and use it to control the voltage of the another (QC3) port. In that case, don't forget to connect the GND of both ports together (but **NOT** their VCCs of cource).
+Alternately, you can add a buck-boost converter which will be able to power the Arduino based on the full QC3 range, but you will probably end up with a solution generally more expensive and more complex than designing your own variable power supply in the first place.
+
+The recommended alternative is to select a multi-port QC3 charger, to use one QC3 port as your main output and to power the Arduino's 5V pin from another (possibily non-QC) port. In that case, don't forget to connect the GND of both ports together (but **NOT** their VCCs of cource).
 
 ## Download and install
 ### Library manager
