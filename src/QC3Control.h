@@ -11,7 +11,8 @@
  */
  
 #define QC3_MIN_VOLTAGE_MV              3600
-#define QC3_MAX_VOLTAGE_MV              12000
+#define QC3_CLASS_A_MAX_VOLTAGE_MV      12000
+#define QC3_CLASS_B_MAX_VOLTAGE_MV      20000
 
 // timing values for Portable Device are not available, indicative values for a HVDCP charger were taken from the uP7104 datasheet https://www.upi-semi.com/files/1889/1b8dae21-e91a-11e6-97d5-f1910565ec6d
 #define QC_T_GLITCH_BC_DONE_MS          1500
@@ -24,7 +25,7 @@
  *  
  *  The QC3Control-class includes all the functions to easily set the voltage of a Quick Charge 3.0 source..
  *  
- *  @see setVoltage() 
+ *  @see setMilliVoltage(unsigned int) 
  */
 class QC3Control{
   public:
@@ -56,22 +57,34 @@ class QC3Control{
     QC3Control(byte DpPin, byte DmPin, byte DmGndPin);
 
     /**
-     *  @brief Starts the handshake with the QC source.
+     *  @brief Starts the handshake with the QC source in "class A" (up to 12V).
      *  
      *  @details A handshake is needed to be able to set the voltage. 
      *  begin() may be left out, in which case the first method modifying the voltage will silently call begin().
      *
-     *  begin() is **blocking code**. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time. But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting begin() (or a call to setVoltage()) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.
+     *  begin() is **blocking code**. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time. But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting begin() (or a call to one of the setXXX() functions) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.
      *  
-     *  @see setVoltage(), set5V(), set9V(), set12V()
+     *  @see begin(bool), setMilliVoltage(unsigned int), set5V(), set9V(), set12V()
      */
     void begin();
 
+    /**
+     *  @brief Starts the handshake with the QC source, specifying whether the source is "class B" compliant (up to 20V) or not.
+     *  
+     *  @details A handshake is needed to be able to set the voltage. 
+     *  begin() may be left out, in which case the first method modifying the voltage will silently call begin(false).
+     *
+     *  begin() is **blocking code**. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time. But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting begin() (or a call to one of the setXXX() functions) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.
+     *  
+     *  @see begin(), setMilliVoltage(unsigned int), set5V(), set9V(), set12V(), set20V()
+     */
+    void begin(bool classB);
+
 
     /**
-     *  @brief Sets the desired voltage of the QC source.
+     *  @brief (deprecated - use setMilliVoltage()) Sets the desired voltage of the QC source.
      *  
-     *  @details Will set the passed voltage either using discrete (QC2) mode for 5V, 9V and 12V, or using continuous (QC3) mode for all other values. 
+     *  @details Will set the passed voltage either using discrete (QC2) mode for 5V, 9V and 12V (for backwards compatibility with QC2Control API), or using continuous (QC3) mode for all other values. Please use setMilliVoltage() to avoid this behaviour.
      *  
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
      *  @note Setting an unreachable voltage will result in the closest supported voltage being set.
@@ -79,21 +92,21 @@ class QC3Control{
      *  
      *  @param [in] volt The desired voltage (between 3.6V and 12V).
      *  
-     *  @see setMilliVoltage(), set5V(), set9V(), set12V()
+     *  @see setMilliVoltage(unsigned int), set5V(), set9V(), set12V()
      */
     void setVoltage(double volt);
 
     /**
      *  @brief Sets the desired voltage of the QC3.0 source.
      *  
-     *  @details Will always set the passed voltage using continuous (QC3) mode discrete (QC2) mode (even for 5V, 9V and 12V). 
-     *  To force usage of discrete (QC2) mode, please use set5V(), set9V(), set12V() or setVoltage();
+     *  @details Will always set the passed voltage using continuous (QC3) mode (even for 5V, 9V, 12V and 20V). 
+     *  To force usage of discrete (QC2) mode, please use set5V(), set9V(), set12V() or set20V();
      *
-     *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
+     *  @note If no handshake has been done (via begin()) with the QC source, the first call to setMilliVoltage() will result in a call to begin() to do the handshake.
      *  @note Setting an unreachable voltage will result in the closest supported voltage being set.
      *  @note Calling this method on a QC2 charger will not work.
      *  
-     *  @see setVoltage(), set5V(), set9V(), set12V()
+     *  @see set5V(), set9V(), set12V()
      *
      *  @param [in] milliVolt The desired voltage in mV (between 3600mV and 12000mV).
      *  
@@ -102,7 +115,7 @@ class QC3Control{
     
     
     /**
-     *  @brief Return the voltage that the charger is supposed to currently provide.
+     *  @brief (deprecated - use getMilliVoltage()) Return the voltage that the charger is supposed to currently provide.
      *  
      *  @details This will be a value between 3.6 and 12V.
      *  
@@ -133,7 +146,7 @@ class QC3Control{
      *  
      *  @details Sets the output of the QC source to 5V using discrete (QC2) mode.
      *  
-     *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
+     *  @note If no handshake has been done (via begin()) with the QC source, the first call to set5V() will result in a call to begin() to do the handshake.
      */
     void set5V();
 
@@ -143,7 +156,7 @@ class QC3Control{
      *  
      *  @details Sets the output of the QC source to 9V using discrete (QC2) mode.
      *  
-     *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
+     *  @note If no handshake has been done (via begin()) with the QC source, the first call to set9V() will result in a call to begin() to do the handshake.
      */
     void set9V();
 
@@ -153,9 +166,19 @@ class QC3Control{
      *  
      *  @details Sets the output of the QC source to 12V using discrete (QC2) mode.
      *  
-     *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
+     *  @note If no handshake has been done (via begin()) with the QC source, the first call to set12V() will result in a call to begin() to do the handshake.
      */
     void set12V();
+
+
+    /**
+     *  @brief Set voltage to 20V
+     *  
+     *  @details Sets the output of the QC Class B source to 20V using discrete mode.
+     *  
+     *  @note If no handshake has been done (via begin()) with the QC source, the first call to set20V() will result in a call to begin() to do the handshake.
+     */
+    void set20V();
 
 
     /**
@@ -185,6 +208,7 @@ class QC3Control{
     
     bool _handshakeDone; //!< Is the handshake done?
     bool _continuousMode; //!< Are we in continuous adjustment (QC3) mode?
+    bool _classB; //!< Do we have a class B QC source (up to 20V) ?
   
     unsigned int _milliVoltNow; //!< Voltage currently set (in mV). Using the word "now" instead of "current" to prevent confusion between "current" and "voltage" :-)
     

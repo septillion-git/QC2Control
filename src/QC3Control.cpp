@@ -22,6 +22,12 @@ QC3Control::QC3Control(byte DpPin, byte DmPin):
   }
 
 void QC3Control::begin() {
+    begin(false);
+}
+
+void QC3Control::begin(bool classB) {
+  
+  _classB = classB;
   
   // The spec requires that D+ remains at 0.6V during _WaitTime.
   dp600mV(); // Setting D+ to 0.6V is done by default (Arduino pins are input on boot)
@@ -107,11 +113,32 @@ void QC3Control::set12V() {
   _continuousMode = false;
 }
 
+void QC3Control::set20V() {
+  if (_classB) {
+    if(!_handshakeDone){
+      begin();
+    }
+
+    if (_continuousMode) {
+      // Transition from continous to discrete values requires first going to 5V
+      set5V();
+    }
+
+    dp3300mV();
+    dm3300mV();
+
+    delay(QC_T_GLICH_V_CHANGE_MS);
+
+    _milliVoltNow = 20000;
+    _continuousMode = false;
+  }
+}
+
 void QC3Control::incrementVoltage() {
   if(!_handshakeDone){
     begin();
   }
-  if (_milliVoltNow < QC3_MAX_VOLTAGE_MV) {
+  if (_milliVoltNow < (_classB ? QC3_CLASS_B_MAX_VOLTAGE_MV : QC3_CLASS_A_MAX_VOLTAGE_MV)) {
     if(!_continuousMode) {
       switchToContinuousMode();
     }
@@ -158,9 +185,18 @@ void QC3Control::setMilliVoltage(unsigned int milliVolt){
     begin();
   }
 
-  if (milliVolt <= QC3_MIN_VOLTAGE_MV) milliVolt = QC3_MIN_VOLTAGE_MV;
-  else if (milliVolt >= QC3_MAX_VOLTAGE_MV) milliVolt = QC3_MAX_VOLTAGE_MV;
-  else milliVolt = getClosestValidMilliVolt(milliVolt); // useful if an invalid value was passed
+  if (milliVolt <= QC3_MIN_VOLTAGE_MV) {
+    // below lower boundary: limit
+    milliVolt = QC3_MIN_VOLTAGE_MV;
+  }
+  else if (milliVolt >= (_classB ? QC3_CLASS_B_MAX_VOLTAGE_MV : QC3_CLASS_A_MAX_VOLTAGE_MV)) {
+    // above upper boundary: limit
+    milliVolt = (_classB ? QC3_CLASS_B_MAX_VOLTAGE_MV : QC3_CLASS_A_MAX_VOLTAGE_MV);
+  }
+  else {
+    // within boundaries: round
+    milliVolt = getClosestValidMilliVolt(milliVolt); // useful if an invalid value was passed
+  }
   
   if(milliVolt == _milliVoltNow) return;
 
@@ -178,6 +214,7 @@ void QC3Control::setMilliVoltage(unsigned int milliVolt){
 
 void QC3Control::setVoltage(double volt){
   unsigned int milliVolt = getClosestValidMilliVolt(volt * 1000); // useful if an invalid value was passed, but also for rounding errors from double arithmetics
+  // For backwards compatibility with QC2Control, these specific values are always reached in discrete mode. Use setMilliVoltage if you want to avoid that
   switch(milliVolt) {
     case 5000:
       set5V();
