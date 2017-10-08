@@ -104,12 +104,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>Both circuits are supported by the library, but basically, I suggest you first try the recommended circuit, and if your QC3 charger refuses to generate anything else than 5V, then try with the legacy circuit, changing the constructor in the code accordingly.</p>
 <h3>How to connect?</h3>
 <p>As indicated above, the library supports the 2 following configurations. In all cases, all you need is a few resistors and (optionally) two diodes (see next section).</p>
-<p>a) Recommended "6-resistor" circuit.</p>
+<p>a) Recommended "2-wire" circuit.</p>
 <div class="image">
 <img src="recommended_circuit.png" alt="recommended_circuit.png"/>
 <div class="caption">
 QC3Control recommended circuit</div></div>
-<p> b) Legacy "5-resistor" circuit: Apart from the values, it is similar to the QC2Control circuit but requires a third Arduino pin instead of GND on the D- divider. Not recommended unless you have issues with the "6-resistor" version</p>
+<p> b) Legacy "3-wire" circuit: Apart from the values, it is similar to the QC2Control circuit but requires a third Arduino pin instead of GND on the D- divider. Not recommended unless you have issues with the "2-wire" version</p>
 <div class="image">
 <img src="legacy_circuit.png" alt="legacy_circuit.png"/>
 <div class="caption">
@@ -138,7 +138,7 @@ QC3Control circuit</div></div>
 <li>Done!</li>
 </ol>
 <h3>GitHub</h3>
-<p>Latest release: <b><a href="https://github.com/vdeconinck/QC3Control/archive/v1.2.0.zip">v1.2.0</a></b></p>
+<p>Latest release: <b><a href="https://github.com/vdeconinck/QC3Control/archive/v1.3.0.zip">v1.3.0</a></b></p>
 <ol type="1">
 <li>Download the latest release.</li>
 <li>Extract it to the <code>libraries</code> folder <b>inside</b> your Sketchbook. Default is <code>[user]\Arduino\libraries</code>.</li>
@@ -158,13 +158,13 @@ QC3Control circuit</div></div>
 </ol>
 <p>Alternatively you can download it from GitHub and simply unpack it over the current version (or remove the old version first).</p>
 <h2>Usage</h2>
-<p>Just see this simple sketch (assuming the recommended circuit is used) </p><div class="fragment"><div class="line">{C++}</div><div class="line">#include &quot;QC3Control.h&quot;</div><div class="line"></div><div class="line">//Pin 4 for Data+</div><div class="line">//Pin 5 for Data-</div><div class="line">//See How to connect in the documentation for more details.</div><div class="line">QC3Control quickCharge(4, 5);</div><div class="line"></div><div class="line">void setup() {</div><div class="line">  //Optional</div><div class="line">  //quickCharge.begin();</div><div class="line"></div><div class="line">  //set voltage to 12V</div><div class="line">  quickCharge.set12V();</div><div class="line"></div><div class="line">  delay(1000);</div><div class="line">}</div><div class="line"></div><div class="line">void loop() {</div><div class="line">  //And you can change it on the fly</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.set9V();</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.set5V();</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.setVoltage(6);</div><div class="line">  delay(1000);</div><div class="line">  for (int i = 0; i &lt; 10; i++) quickCharge.decrementVoltage();</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.set12V();</div><div class="line">}</div></div><!-- fragment --><p> <b>Please note</b>, delay() here is just used to demonstrate. Better not to stop the complete program with delay()'s.</p>
+<p>Just see this simple sketch (assuming the recommended circuit is used) </p><div class="fragment"><div class="line">{C++}</div><div class="line">#include &lt;QC3Control.h&gt;</div><div class="line"></div><div class="line">//Pin 4 for Data+</div><div class="line">//Pin 5 for Data-</div><div class="line">//See How to connect in the documentation for more details.</div><div class="line">QC3Control quickCharge(4, 5);</div><div class="line"></div><div class="line">void setup() {</div><div class="line">  //Optional</div><div class="line">  //quickCharge.begin();</div><div class="line"></div><div class="line">  //set voltage to 12V</div><div class="line">  quickCharge.set12V();</div><div class="line"></div><div class="line">  delay(1000);</div><div class="line">}</div><div class="line"></div><div class="line">void loop() {</div><div class="line">  //And you can change it on the fly</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.set9V();</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.set5V();</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.setVoltage(6);</div><div class="line">  delay(1000);</div><div class="line">  for (int i = 0; i &lt; 10; i++) quickCharge.decrementVoltage();</div><div class="line">  delay(1000);</div><div class="line">  quickCharge.set12V();</div><div class="line">}</div></div><!-- fragment --><p> <b>Please note</b>, delay() here is just used to demonstrate. Better not to stop the complete program with delay()'s.</p>
 <p>If you can, place the call to begin() (or setVoltage()) at the end of the setup(). The handshake needs a fixed time but that already starts when the QC 3.0 source (and thus the Arduino) is turned on. So by doing begin() last you can do stuff while waiting.</p>
 <h3>Constructors</h3>
 <h4><a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control(byte DpPin, byte DmPin)</a></h4>
-<p>[QC2 or QC3 power source] This will create a <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> object to control the voltage of the Quick Charge source when using the recommended "6-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the Data- side. See <a href="#how-to-connect"><b>How to connect?</b></a>.</p>
+<p>[QC2 or QC3 power source] This will create a <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> object to control the voltage of the Quick Charge source when using the recommended "2-wire" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the Data- side. See <a href="#how-to-connect"><b>How to connect?</b></a>.</p>
 <h4><a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control(byte DpPin, byte DmPin, byte DmGndPin)</a></h4>
-<p>[QC2 or QC3 power source] This will create a <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> object to control the voltage of the Quick Charge 3.0 source when using the legacy "5-resistor" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the upper resistor of the Data- side and DmGndPin is the pin number for the lower resistor of the Data- side. See <a href="#how-to-connect"><b>How to connect?</b></a>.</p>
+<p>[QC2 or QC3 power source] This will create a <a class="el" href="class_q_c3_control.html" title="Main class of the QC3Control-library. ">QC3Control</a> object to control the voltage of the Quick Charge 3.0 source when using the legacy "3-wire" circuit. DpPin is the pin number for the Data+ side, DmPin is the pin number for the upper resistor of the Data- side and DmGndPin is the pin number for the lower resistor of the Data- side. See <a href="#how-to-connect"><b>How to connect?</b></a>.</p>
 <h3>Methods</h3>
 <h4>void .begin()</h4>
 <p>[QC2 or QC3 power source] Just does the handshake with the Quick Charge 3.0 source so it will accept commands for different voltage. It's not mandatory to call begin(), if it's not called before setting a voltage the library will call begin() at that moment.</p>

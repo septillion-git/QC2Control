@@ -66,7 +66,7 @@ QC3Control is available via Arduino IDE Library Manager.
 6.  Done!
 
 ### GitHub
-Latest release: **[v1.2.0](https://github.com/vdeconinck/QC3Control/archive/v1.2.0.zip)**
+Latest release: **[v1.3.0](https://github.com/vdeconinck/QC3Control/archive/v1.3.0.zip)**
 
 1. Download the latest release.
 2. Extract it to the `libraries` folder **inside** your Sketchbook. Default is `[user]\Arduino\libraries`. 
