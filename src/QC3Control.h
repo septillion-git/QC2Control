@@ -27,7 +27,7 @@ class QC3Control{
      *  @param [in] DmPin Data- pin connected to the middle of the D- 1K5-10K bridge via a 470R resistor 
      */
     QC3Control(byte DpPin, byte DmPin);
-    
+
     /**
      *  @brief Makes an object to control a Quick Charge 3.0 source with a legacy "3-wire" circuit
      *  
@@ -66,6 +66,7 @@ class QC3Control{
      */
     void begin(bool classB);
 
+    void setVoltage(unsigned int voltage);
 
     /**
      *  @brief (deprecated - use setMilliVoltage()) Sets the desired voltage of the QC source.
@@ -98,8 +99,7 @@ class QC3Control{
      *  
      */
     void setMilliVoltage(unsigned int milliVolt);
-    
-    
+
     /**
      *  @brief (deprecated - use getMilliVoltage()) Return the voltage that the charger is supposed to currently provide.
      *  
@@ -112,7 +112,7 @@ class QC3Control{
      *  @return The voltage that the charger is supposed to currently provide, in Volt
      */
     float getVoltage();
-    
+
     /**
      *  @brief Return the voltage that the charger is supposed to currently provide.
      *  
@@ -125,8 +125,7 @@ class QC3Control{
      *  @return The voltage that the charger is supposed to currently provide, in milliVolt
      */
     unsigned int getMilliVoltage();
-    
-    
+
     /**
      *  @brief Set voltage to 5V
      *  
@@ -135,7 +134,6 @@ class QC3Control{
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to set5V() will result in a call to begin() to do the handshake.
      */
     void set5V();
-
 
     /**
      *  @brief Set voltage to 9V
@@ -146,7 +144,6 @@ class QC3Control{
      */
     void set9V();
 
-
     /**
      *  @brief Set voltage to 12V
      *  
@@ -155,7 +152,6 @@ class QC3Control{
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to set12V() will result in a call to begin() to do the handshake.
      */
     void set12V();
-
 
     /**
      *  @brief Set voltage to 20V
@@ -166,7 +162,6 @@ class QC3Control{
      */
     void set20V();
 
-
     /**
      *  @brief Increment the desired voltage of the QC3.0 source by 200mV.
      *  
@@ -175,7 +170,6 @@ class QC3Control{
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to incrementVoltage() will result in a call to begin() to do the handshake, then the voltage will be incremented starting from 5V
      */
     void incrementVoltage();
-
 
     /**
      *  @brief Decrement the desired voltage of the QC3.0 source by 200mV.
@@ -186,7 +180,6 @@ class QC3Control{
      */
     void decrementVoltage();
 
-  
   protected:
     const byte _DpPin; //!< Data+ pin connected to the middle of the D+ 1K5-10K bridge via a 470R resistor 
     const byte _DmPin; //!< Data- pin connected either to the middle of the D- 1K5-10K bridge via a 470R resistor (in recommended "2-wire" circuit), or to the top of the D- 1K5-10K bridge (in legacy "3-wire" circuit)
