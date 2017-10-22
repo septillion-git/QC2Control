@@ -238,15 +238,6 @@ void QC3Control::setVoltage(double volt){
 }
 
 
-inline double QC3Control::getVoltage(){
-  return _milliVoltNow/1000.0;
-}
-
-inline unsigned int QC3Control::getMilliVoltage(){
-  return _milliVoltNow;
-}
-
-
 // Non-public function
 
 void QC3Control::switchToContinuousMode() {
@@ -258,63 +249,3 @@ void QC3Control::switchToContinuousMode() {
 
   _continuousMode = true;
 }
-
-
-// Low level functions to obtain desired voltages
-
-inline void QC3Control::dmHiZ() {
-  if (_DmGndPin != 255) {
-    // "disconnect" DM resistors : D- will be pulled down by QC source
-    pinMode(_DmPin, INPUT); 
-    pinMode(_DmGndPin, INPUT);
-  }
-  else {
-    // Hi-Z is impossible with this hardware !
-  }
-}
-
-inline void QC3Control::dm0V() {
-  if (_DmGndPin != 255) {
-    pinMode(_DmPin, INPUT); // "disconnect" DM top resistor
-    digitalWrite(_DmGndPin, LOW);
-    pinMode(_DmGndPin, OUTPUT); // and pull D- down
-  }
-  else {
-    digitalWrite(_DmPin, LOW);
-    pinMode(_DmPin, OUTPUT); // pull D- down
-  }
-}
-
-inline void QC3Control::dm600mV() {
-  if (_DmGndPin != 255) {  
-    digitalWrite(_DmPin, HIGH); // Activate DM divider so it sets D- to about 0.6V
-    pinMode(_DmPin, OUTPUT);
-    digitalWrite(_DmGndPin, LOW);
-    pinMode(_DmGndPin, OUTPUT);
-  }
-  else {
-    pinMode(_DmPin, INPUT); // Let the DM divider set D- to about 0.6V
-  }
-}
-
-inline void QC3Control::dm3300mV() {
-  if (_DmGndPin != 255) {  
-    digitalWrite(_DmPin, HIGH); // Pull D- up (3.3V minimum)
-    pinMode(_DmPin, OUTPUT);  
-    pinMode(_DmGndPin, INPUT);     // And leave DM bottom resistor "unconnected" 
-  }
-  else {
-    digitalWrite(_DmPin, HIGH); // Pull D- up (3.3V minimum)
-    pinMode(_DmPin, OUTPUT);
-  }
-}
-
-inline void QC3Control::dp600mV() {
-  pinMode(_DpPin, INPUT); // Let the DP divider set D+ to about 0.6V
-}
-
-inline void QC3Control::dp3300mV() {
-  digitalWrite(_DpPin, HIGH); // Pull D+ up (3.3V minimum)
-  pinMode(_DpPin, OUTPUT);
-}
-
