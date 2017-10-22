@@ -24,11 +24,6 @@ QC3Control::QC3Control(byte DpPin, byte DmPin, byte DmGndPin):
   }
 
 QC3Control::QC3Control(byte DpPin, byte DmPin):
-  _DpPin(DpPin),
-  _DmPin(DmPin),
-  _DmGndPin(0),
-  _handshakeDone(false),
-  _continuousMode(false),
   _milliVoltNow(5000) {
     //nothing to do
   }
