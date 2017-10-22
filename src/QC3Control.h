@@ -65,19 +65,32 @@ class QC3Control{
      *  @see begin(), setMilliVoltage(unsigned int), set5V(), set9V(), set12V(), set20V()
      */
     void begin(bool classB);
-
-    void setVoltage(byte voltage);
-
+    
     /**
      *  @brief (deprecated - use setMilliVoltage()) Sets the desired voltage of the QC source.
      *  
-     *  @details Will set the passed voltage either using discrete (QC2) mode for 5V, 9V and 12V (for backwards compatibility with QC2Control API), or using continuous (QC3) mode for all other values. Please use setMilliVoltage() to avoid this behaviour.
+     *  @details Will set the passed voltage either using discrete (QC2) mode for 5V, 9V and 12V (for backwards compatibility with QC2Control API), or using continuous (QC3) mode for all other values. Please use setMilliVoltage() or setVoltage(float) to avoid this behaviour.
      *  
      *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
      *  @note Setting an unreachable voltage will result in the closest supported voltage being set.
      *  @note Calling this method on a QC2 charger will only work for 5V, 9V or 12V.
      *  
      *  @param [in] volt The desired voltage (between 3.6V and 12V).
+     *  
+     *  @see setMilliVoltage(unsigned int), set5V(), set9V(), set12V()
+     */
+    void setVoltage(byte voltage);
+
+    /**
+     *  @brief Sets the desired voltage of the QC source.
+     *  
+     *  @details Will always set the passed voltage using continuous (QC3) mode (even for 5V, 9V, 12V and 20V). Synonymous for setMilliVoltage(voltage * 1000).
+     *  
+     *  @note If no handshake has been done (via begin()) with the QC source, the first call to setVoltage() will result in a call to begin() to do the handshake.
+     *  @note Setting an unreachable voltage will result in the closest supported voltage being set.
+     *  @warning Calling this method on a QC2 charger will __not__ work.
+     *  
+     *  @param [in] volt The desired voltage,between 3.6V and 12.0V (or 20.0V for class B).
      *  
      *  @see setMilliVoltage(unsigned int), set5V(), set9V(), set12V()
      */
@@ -95,7 +108,7 @@ class QC3Control{
      *  
      *  @see set5V(), set9V(), set12V()
      *
-     *  @param [in] milliVolt The desired voltage in mV (between 3600mV and 12000mV).
+     *  @param [in] milliVolt The desired voltage in mV,between 3600mV and 12000mV (or 20000mv for class B).
      *  
      */
     void setMilliVoltage(unsigned int milliVolt);
@@ -272,7 +285,7 @@ inline void QC3Control::begin(){
   begin(false);
 }
 
-inline void QC3Control::setVoltage(byte voltage){
+inline void QC3Control::setVoltage(float voltage){
   setMilliVoltage(voltage * 1000);
 }
 

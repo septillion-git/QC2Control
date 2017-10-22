@@ -209,21 +209,22 @@ void QC3Control::setMilliVoltage(unsigned int milliVolt){
   }
 }
 
-void QC3Control::setVoltage(float volt){
-  unsigned int milliVolt = getClosestValidMilliVolt(volt * 1000); // useful if an invalid value was passed, but also for rounding errors from double arithmetics
+
+
+void QC3Control::setVoltage(byte volt){
   // For backwards compatibility with QC2Control, these specific values are always reached in discrete mode. Use setMilliVoltage if you want to avoid that
-  switch(milliVolt) {
-    case 5000:
+  switch(volt) {
+    case 5:
       set5V();
       break;
-    case 9000:
+    case 9:
       set9V();
       break;
-    case 12000:
+    case 12:
       set12V();
       break;
     default:
-      setMilliVoltage(milliVolt);
+      setMilliVoltage(volt * 1000);
   }
 }
 
