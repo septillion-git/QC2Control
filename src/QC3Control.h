@@ -80,7 +80,7 @@ class QC3Control{
      *  
      *  @see setMilliVoltage(unsigned int), set5V(), set9V(), set12V()
      */
-    void setVoltage(double volt);
+    void setVoltage(float volt);
 
     /**
      *  @brief Sets the desired voltage of the QC3.0 source.
@@ -111,7 +111,7 @@ class QC3Control{
      *  
      *  @return The voltage that the charger is supposed to currently provide, in Volt
      */
-    double getVoltage();
+    float getVoltage();
     
     /**
      *  @brief Return the voltage that the charger is supposed to currently provide.
@@ -250,7 +250,7 @@ class QC3Control{
     void dp3300mV(); //!< Sets Data+ pin to 3,3V
 };
 
-inline double QC3Control::getVoltage(){
+inline float QC3Control::getVoltage(){
   return _milliVoltNow/1000.0;
 }
 
