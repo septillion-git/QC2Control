@@ -19,17 +19,19 @@ QC3Control::QC3Control(byte DpPin, byte DmPin, byte DmGndPin):
   _DmGndPin(DmGndPin),
   _handshakeDone(false),
   _continuousMode(false),
-  _milliVoltNow(5000) {
-    //nothing to do
-  }
+  _milliVoltNow(5000) 
+{
+  //nothing to do
+}
 
 QC3Control::QC3Control(byte DpPin, byte DmPin):
-  QC3Control(DpPin, DmPin, 255) {
-    //nothing to do
-  }
+  QC3Control(DpPin, DmPin, 255) 
+{
+  //nothing to do
+}
 
-void QC3Control::begin() {
-    begin(false);
+void QC3Control::begin(){
+  begin(false) 
 }
 
 void QC3Control::begin(bool classB) {
@@ -228,7 +230,6 @@ void QC3Control::setVoltage(float volt){
       setMilliVoltage(milliVolt);
   }
 }
-
 
 // Non-public function
 
