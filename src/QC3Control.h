@@ -212,7 +212,7 @@ class QC3Control{
   
     unsigned int _milliVoltNow; //!< Voltage currently set (in mV). Using the word "now" instead of "current" to prevent confusion between "current" and "voltage" :-)
     
-    void QC3Control::switchToContinuousMode();
+    void QC3Control::switchToContinuousMode(); //!< Switches to continues mode
 
     // Low level functions to obtain desired voltages    
     void dmHiZ(); //!< Sets Data- pin to floating
