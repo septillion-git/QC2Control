@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['_5fdmpin',['_DmPin',['../class_q_c2_control.html#a7c7b41d0f8ef1b380a21de73f261e95d',1,'QC2Control']]],
-  ['_5fdppin',['_DpPin',['../class_q_c2_control.html#a86690bf35d5bd8d30f1de4f77565c785',1,'QC2Control']]],
-  ['_5fhandshakedone',['_handshakeDone',['../class_q_c2_control.html#a55560fde6171de058b8e5dd6ab37e3f9',1,'QC2Control']]],
-  ['_5fsetvoltage',['_setVoltage',['../class_q_c2_control.html#ad2bdbdcffab14b669b52917cd40da99c',1,'QC2Control']]],
-  ['_5fwaittime',['_WaitTime',['../class_q_c2_control.html#ae622e3900ae4c6fcb9a98354f30e7f90',1,'QC2Control']]]
+  ['_5fclassb',['_classB',['../class_q_c3_control.html#a5cea62881bea323c40923c0beda69b4f',1,'QC3Control']]],
+  ['_5fcontinuousmode',['_continuousMode',['../class_q_c3_control.html#a7b375b93f2e927d054dbdcb0e5fe206b',1,'QC3Control']]],
+  ['_5fdmgndpin',['_DmGndPin',['../class_q_c3_control.html#a7656a51daefa96576feda772fd65a2e0',1,'QC3Control']]],
+  ['_5fdmpin',['_DmPin',['../class_q_c3_control.html#a8f2226968e8f22096d02b7148e00e303',1,'QC3Control']]],
+  ['_5fdppin',['_DpPin',['../class_q_c3_control.html#a3f7e5d74c60f18bcc7da4b106f8f5c10',1,'QC3Control']]],
+  ['_5fhandshakedone',['_handshakeDone',['../class_q_c3_control.html#ab524f812e4fe2baaee63bba0b3209308',1,'QC3Control']]],
+  ['_5fmillivoltnow',['_milliVoltNow',['../class_q_c3_control.html#a9924a562f7954a8f4575a96391789df3',1,'QC3Control']]]
 ];

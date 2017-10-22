@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getvoltage',['getVoltage',['../class_q_c2_control.html#af02ab646f0e5c8102f67c844d804306f',1,'QC2Control']]]
+  ['decrementvoltage',['decrementVoltage',['../class_q_c3_control.html#ab157dcf761d9cb0f6eb33898becdd9c8',1,'QC3Control']]]
 ];

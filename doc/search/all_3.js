@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['qc2control',['QC2Control',['../index.html',1,'']]],
-  ['qc2control',['QC2Control',['../class_q_c2_control.html',1,'QC2Control'],['../class_q_c2_control.html#a0129ca5dd20dbff077623dac5b5b5113',1,'QC2Control::QC2Control()']]],
-  ['qc2control_2eh',['QC2Control.h',['../_q_c2_control_8h.html',1,'']]]
+  ['getmillivoltage',['getMilliVoltage',['../class_q_c3_control.html#a93887f1365f5a06f60e897ede4e12e36',1,'QC3Control']]],
+  ['getvoltage',['getVoltage',['../class_q_c3_control.html#aa28b3efc2a2b739898814394e0ce9be9',1,'QC3Control']]]
 ];

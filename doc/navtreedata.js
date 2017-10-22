@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "QC2Control", "index.html", [
+  [ "QC3Control", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -18,7 +18,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_q_c2_control_8h.html"
+"_q_c3_control_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
