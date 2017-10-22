@@ -1,6 +1,18 @@
 #include "Arduino.h"
 #include "QC3Control.h"
 
+/* 
+ *  QC specification constants
+ *  Derived from http://www.upi-semi.com/files/1889/1b8dae21-e91a-11e6-97d5-f1910565ec6d
+ */
+const unsigned int QC3Control::MinMilliVoltage = 3600;
+const unsigned int QC3Control::MaxMilliVoltageClassA = 12000;
+const unsigned int QC3Control::MaxMilliVoltageClassB = 20000;
+const unsigned int QC3Control::QCHandshakeTime = 1500;
+const unsigned int QC3Control::QCModeChangeTime = 60;
+const unsigned int QC3Control::QCActiveTime = 1;
+const unsigned int QC3Control::QCInactiveTime = 1;
+
 QC3Control::QC3Control(byte DpPin, byte DmPin, byte DmGndPin):
   _DpPin(DpPin),
   _DmPin(DmPin),
@@ -38,9 +50,9 @@ void QC3Control::begin(bool classB) {
     //because the Arduino starts the right way we just wait till millis() passes
     //Has the advantage that if you call this last in setup, all other setup
     //stuff will be counted as "waiting" :)
-    // After QC_T_GLITCH_BC_DONE_MS, the QC source removes the short between D+ and D- and pulls D- down. 
+    // After QCHandshakeTime, the QC source removes the short between D+ and D- and pulls D- down. 
     // We need to stay in this state for at least 2 more milliseconds before we can start requesting voltages.
-    while(millis() < QC_T_GLITCH_BC_DONE_MS + 2 ); 
+    while(millis() < QCHandshakeTime + 2 ); 
   }
   else {
     // We're in "QC3 schema". There's no way to let D- "float", but setting it to 0.6V will prevent the D+/D- short from pulling D+/D- down
@@ -49,9 +61,9 @@ void QC3Control::begin(bool classB) {
     //because the Arduino starts the right way we just wait till millis() passes
     //Has the advantage that if you call this last in setup, all other setup
     //stuff will be counted as "waiting" :)
-    while(millis() < QC_T_GLITCH_BC_DONE_MS); 
+    while(millis() < QCHandshakeTime); 
 
-    // After QC_T_GLITCH_BC_DONE_MS, the QC source removes the short between D+ and D- and pulls D- down. 
+    // After QCHandshakeTime, the QC source removes the short between D+ and D- and pulls D- down. 
     // We need to stay in this state for at least 2 more milliseconds before we can start requesting voltages.
     dm0V(); // "Acknowledge" by simulating that we "follow" the internal pull down
     delay(2);
@@ -69,7 +81,7 @@ void QC3Control::set5V() {
   dp600mV();
   dm0V();
 
-  delay(QC_T_GLICH_V_CHANGE_MS);
+  delay(QCModeChangeTime);
 
   _milliVoltNow = 5000;
   _continuousMode = false;
@@ -88,7 +100,7 @@ void QC3Control::set9V() {
   dp3300mV();
   dm600mV();
   
-  delay(QC_T_GLICH_V_CHANGE_MS);
+  delay(QCModeChangeTime);
 
   _milliVoltNow = 9000;
   _continuousMode = false;
@@ -107,7 +119,7 @@ void QC3Control::set12V() {
   dp600mV();
   dm600mV();
 
-  delay(QC_T_GLICH_V_CHANGE_MS);
+  delay(QCModeChangeTime);
 
   _milliVoltNow = 12000;
   _continuousMode = false;
@@ -127,7 +139,7 @@ void QC3Control::set20V() {
     dp3300mV();
     dm3300mV();
 
-    delay(QC_T_GLICH_V_CHANGE_MS);
+    delay(QCModeChangeTime);
 
     _milliVoltNow = 20000;
     _continuousMode = false;
@@ -138,16 +150,16 @@ void QC3Control::incrementVoltage() {
   if(!_handshakeDone){
     begin();
   }
-  if (_milliVoltNow < (_classB ? QC3_CLASS_B_MAX_VOLTAGE_MV : QC3_CLASS_A_MAX_VOLTAGE_MV)) {
+  if (_milliVoltNow < (_classB ? MaxMilliVoltageClassB : MaxMilliVoltageClassA)) {
     if(!_continuousMode) {
       switchToContinuousMode();
     }
     // From http://www.onsemi.com/pub/Collateral/NCP4371-D.PDF :
     // "For the single request, an HVDCP recognizes a rising edge on D+ for an increment ..." 
     dp3300mV();
-    delay(QC_T_ACTIVE_MS);
+    delay(QCActiveTime);
     dp600mV();
-    delay(QC_T_INACTIVE_MS);  
+    delay(QCInactiveTime);  
   } 
 
   _milliVoltNow += 200;
@@ -157,7 +169,7 @@ void QC3Control::decrementVoltage() {
   if(!_handshakeDone){
     begin();
   }
-  if (_milliVoltNow > QC3_MIN_VOLTAGE_MV) {
+  if (_milliVoltNow > MinMilliVoltage) {
     if(!_continuousMode) {
       switchToContinuousMode();
     }
@@ -165,9 +177,9 @@ void QC3Control::decrementVoltage() {
     // From http://www.onsemi.com/pub/Collateral/NCP4371-D.PDF :
     // "... and falling edge on D− for a decrement" 
     dm600mV();
-    delay(QC_T_ACTIVE_MS);
+    delay(QCActiveTime);
     dm3300mV();
-    delay(QC_T_INACTIVE_MS);  
+    delay(QCInactiveTime);  
   }
   _milliVoltNow -= 200;
 }
@@ -177,7 +189,7 @@ void QC3Control::decrementVoltage() {
  * e.g. passing 4901 or 4950 or 4999 or 5000 or 5001 or 5050 or 5100 returns 5000
  */
 unsigned int getClosestValidMilliVolt(unsigned int mV){
-  return 200* ((mV + 99) / 200);
+  return 200 * ((mV + 99) / 200);
 }
 
 void QC3Control::setMilliVoltage(unsigned int milliVolt){
@@ -185,13 +197,13 @@ void QC3Control::setMilliVoltage(unsigned int milliVolt){
     begin();
   }
 
-  if (milliVolt <= QC3_MIN_VOLTAGE_MV) {
+  if (milliVolt <= MinMilliVoltage) {
     // below lower boundary: limit
-    milliVolt = QC3_MIN_VOLTAGE_MV;
+    milliVolt = MinMilliVoltage;
   }
-  else if (milliVolt >= (_classB ? QC3_CLASS_B_MAX_VOLTAGE_MV : QC3_CLASS_A_MAX_VOLTAGE_MV)) {
+  else if (milliVolt >= (_classB ? MaxMilliVoltageClassB : MaxMilliVoltageClassA)) {
     // above upper boundary: limit
-    milliVolt = (_classB ? QC3_CLASS_B_MAX_VOLTAGE_MV : QC3_CLASS_A_MAX_VOLTAGE_MV);
+    milliVolt = (_classB ? MaxMilliVoltageClassB : MaxMilliVoltageClassA);
   }
   else {
     // within boundaries: round
@@ -247,7 +259,7 @@ void QC3Control::switchToContinuousMode() {
   dp600mV();
   dm3300mV();
 
-  delay(QC_T_GLICH_V_CHANGE_MS);
+  delay(QCModeChangeTime);
 
   _continuousMode = true;
 }

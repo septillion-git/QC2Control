@@ -6,20 +6,6 @@
 
 #include "Arduino.h"
 
-/* 
- *  QC specification constants
- */
- 
-#define QC3_MIN_VOLTAGE_MV              3600
-#define QC3_CLASS_A_MAX_VOLTAGE_MV      12000
-#define QC3_CLASS_B_MAX_VOLTAGE_MV      20000
-
-// timing values for Portable Device are not available, indicative values for a HVDCP charger were taken from the uP7104 datasheet https://www.upi-semi.com/files/1889/1b8dae21-e91a-11e6-97d5-f1910565ec6d
-#define QC_T_GLITCH_BC_DONE_MS          1500
-#define QC_T_GLICH_V_CHANGE_MS          60
-#define QC_T_ACTIVE_MS                  1
-#define QC_T_INACTIVE_MS                1
-
 /**
  *  @brief Main class of the QC3Control-library
  *  
@@ -211,6 +197,47 @@ class QC3Control{
     bool _classB; //!< Do we have a class B QC source (up to 20V) ?
   
     unsigned int _milliVoltNow; //!< Voltage currently set (in mV). Using the word "now" instead of "current" to prevent confusion between "current" and "voltage" :-)
+    
+    // QC specification constants
+    static const unsigned int MinMilliVoltage; //!< The minimum voltage that can be set for a QC3.0 charger.
+    static const unsigned int MaxMilliVoltageClassA; //!< The maximum voltage that can be set for a QC3.0 charger __ClassA__.
+    static const unsigned int MaxMilliVoltageClassB; //!< The maximum voltage that can be set for a QC3.0 charger __ClassB__.
+    
+    /**
+     *  @brief Time [ms] to wait till a handshake is done. 
+     *  
+     *  Also known as t<sub>GLITCH_BC_DONE</sub>.
+     *  
+     *  @note Timing values for Portable Device are not available, indicative values for a HVDCP charger were taken from the <a href="http://www.upi-semi.com/files/1889/1b8dae21-e91a-11e6-97d5-f1910565ec6d" target="_blank">uP7104 datasheet</a>.
+     */
+    static const unsigned int QCHandshakeTime;
+    
+    /**
+     *  @brief Time [ms] to wait till a mode change (continuous mode or discrete mode) is done. 
+     *  
+     *  Also known as t<sub>GLITCH_V_CHANGE</sub>
+     *  
+     *  @note Timing values for Portable Device are not available, indicative values for a HVDCP charger were taken from the <a href="http://www.upi-semi.com/files/1889/1b8dae21-e91a-11e6-97d5-f1910565ec6d" target="_blank">uP7104 datasheet</a>.
+     */
+    static const unsigned int QCModeChangeTime;
+    
+        /**
+     *  @brief Time [ms] an active pulse in continuous mode should take. 
+     *  
+     *  Also known as t<sub>ACTIVE</sub>
+     *  
+     *  @note Timing values for Portable Device are not available, indicative values for a HVDCP charger were taken from the <a href="http://www.upi-semi.com/files/1889/1b8dae21-e91a-11e6-97d5-f1910565ec6d" target="_blank">uP7104 datasheet</a>.
+     */
+    static const unsigned int QCActiveTime;
+    
+        /**
+     *  @brief Time [ms] an inactive pulse (after return of a pulse) should take. 
+     *  
+     *  Also known as t<sub>INACTIVE</sub>
+     *  
+     *  @note Timing values for Portable Device are not available, indicative values for a HVDCP charger were taken from the <a href="http://www.upi-semi.com/files/1889/1b8dae21-e91a-11e6-97d5-f1910565ec6d" target="_blank">uP7104 datasheet</a>.
+     */
+    static const unsigned int QCInactiveTime;
     
     void QC3Control::switchToContinuousMode(); //!< Switches to continues mode
 
