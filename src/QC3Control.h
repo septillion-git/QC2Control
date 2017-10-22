@@ -239,7 +239,7 @@ class QC3Control{
      */
     static const unsigned int QCInactiveTime;
     
-    void QC3Control::switchToContinuousMode(); //!< Switches to continues mode
+    void switchToContinuousMode(); //!< Switches to continues mode
 
     // Low level functions to obtain desired voltages    
     void dmHiZ(); //!< Sets Data- pin to floating
