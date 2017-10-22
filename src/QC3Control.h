@@ -261,7 +261,7 @@ class QC3Control{
 };
 
 inline void QC3Control::begin(){
-  begin(false) 
+  begin(false);
 }
 
 inline float QC3Control::getVoltage(){
