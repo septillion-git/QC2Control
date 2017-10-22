@@ -66,7 +66,7 @@ class QC3Control{
      */
     void begin(bool classB);
 
-    void setVoltage(unsigned int voltage);
+    void setVoltage(byte voltage);
 
     /**
      *  @brief (deprecated - use setMilliVoltage()) Sets the desired voltage of the QC source.
@@ -101,17 +101,32 @@ class QC3Control{
     void setMilliVoltage(unsigned int milliVolt);
 
     /**
-     *  @brief (deprecated - use getMilliVoltage()) Return the voltage that the charger is supposed to currently provide.
+     *  @brief Return the voltage that the charger is supposed to currently provide __in whole volts__.
      *  
-     *  @details This will be a value between 3.6 and 12V.
+     *  @details This can be 4V to 12V (or 20V with a Class B charger).
+     *  
+     *  @warning This function returns the rounded (whole) voltage. To get it with decimals use getMilliVoltage() or getVoltageFloat().
      *  
      *  @note The library has no feedback if that voltage is actually provided. It just takes note of the operations requested to the charger and computes the voltage that the charger is supposed to output now.
      *  
-     *  @see getMilliVoltage()
+     *  @see getMilliVoltage(), getVoltageFloat()
      *  
      *  @return The voltage that the charger is supposed to currently provide, in Volt
      */
-    float getVoltage();
+    byte getVoltage();
+    
+     /**
+     *  @brief Return the voltage that the charger is supposed to currently provide.
+     *  
+     *  @details This can be anything between 3,6V to 12,0V (or 20,0V with a Class B charger).
+     *  
+     *  @note The library has no feedback if that voltage is actually provided. It just takes note of the operations requested to the charger and computes the voltage that the charger is supposed to output now.
+     *  
+     *  @see getMilliVoltage(), getVoltage()
+     *  
+     *  @return The voltage that the charger is supposed to currently provide, in Volt
+     */
+    float getVoltageFloat();
 
     /**
      *  @brief Return the voltage that the charger is supposed to currently provide.
@@ -257,7 +272,15 @@ inline void QC3Control::begin(){
   begin(false);
 }
 
-inline float QC3Control::getVoltage(){
+inline void QC3Control::setVoltage(byte voltage){
+  setMilliVoltage(voltage * 1000);
+}
+
+inline byte QC3Control::getVoltage(){
+  return (_milliVoltNow + 500)/1000;
+}
+
+inline float QC3Control::getVoltageFloat(){
   return _milliVoltNow/1000.0;
 }
 
