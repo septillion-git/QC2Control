@@ -240,7 +240,7 @@ class QC3Control{
     static const unsigned int QCInactiveTime;
     
     void switchToContinuousMode(); //!< Switches to continues mode
-
+    
     // Low level functions to obtain desired voltages    
     void dmHiZ(); //!< Sets Data- pin to floating
     void dm0V(); //!< Sets Data- pin to 0V
@@ -248,6 +248,16 @@ class QC3Control{
     void dm3300mV(); //!< Sets Data- pin to 3,3V
     void dp600mV(); //!<Sets Data+ pin to 600mV
     void dp3300mV(); //!< Sets Data+ pin to 3,3V
+    
+    /**
+     *  @brief Returns the closest multiple of 200[mV]
+     *  
+     *  @details e.g. passing 4901 or 4950 or 4999 or 5000 or 5001 or 5050 or 5100 returns 5000
+     *  
+     *  @param [in] mV The desired voltage [mV].
+     *  @return The closest valid QC3.0 voltage.
+     */
+    static unsigned int getClosestValidMilliVolt(unsigned int mV);
 };
 
 inline float QC3Control::getVoltage(){

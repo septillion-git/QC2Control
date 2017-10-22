@@ -179,14 +179,6 @@ void QC3Control::decrementVoltage() {
   _milliVoltNow -= 200;
 }
 
-
-/* Returns the closest multiple of 200
- * e.g. passing 4901 or 4950 or 4999 or 5000 or 5001 or 5050 or 5100 returns 5000
- */
-unsigned int getClosestValidMilliVolt(unsigned int mV){
-  return 200 * ((mV + 99) / 200);
-}
-
 void QC3Control::setMilliVoltage(unsigned int milliVolt){
   if(!_handshakeDone){
     begin();
@@ -248,4 +240,8 @@ void QC3Control::switchToContinuousMode() {
   delay(QCModeChangeTime);
 
   _continuousMode = true;
+}
+
+unsigned int QC3Control::getClosestValidMilliVolt(unsigned int mV){
+  return 200 * ((mV + 100) / 200);
 }
