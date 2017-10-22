@@ -24,7 +24,7 @@ QC3Control::QC3Control(byte DpPin, byte DmPin, byte DmGndPin):
   }
 
 QC3Control::QC3Control(byte DpPin, byte DmPin):
-  _milliVoltNow(5000) {
+  QC3Control(DpPin, DmPin, 255) {
     //nothing to do
   }
 
@@ -38,7 +38,7 @@ void QC3Control::begin(bool classB) {
   
   // The spec requires that D+ remains at 0.6V during _WaitTime.
   dp600mV(); // Setting D+ to 0.6V is done by default (Arduino pins are input on boot)
-  if (_DmGndPin != 0) {
+  if (_DmGndPin != 255) {
     // We're in "QC2 schema" + DmGndPin mode
     dmHiZ(); // Which is done by default
 
@@ -263,7 +263,7 @@ void QC3Control::switchToContinuousMode() {
 // Low level functions to obtain desired voltages
 
 inline void QC3Control::dmHiZ() {
-  if (_DmGndPin != 0) {
+  if (_DmGndPin != 255) {
     // "disconnect" DM resistors : D- will be pulled down by QC source
     pinMode(_DmPin, INPUT); 
     pinMode(_DmGndPin, INPUT);
@@ -274,7 +274,7 @@ inline void QC3Control::dmHiZ() {
 }
 
 inline void QC3Control::dm0V() {
-  if (_DmGndPin != 0) {
+  if (_DmGndPin != 255) {
     pinMode(_DmPin, INPUT); // "disconnect" DM top resistor
     digitalWrite(_DmGndPin, LOW);
     pinMode(_DmGndPin, OUTPUT); // and pull D- down
@@ -286,7 +286,7 @@ inline void QC3Control::dm0V() {
 }
 
 inline void QC3Control::dm600mV() {
-  if (_DmGndPin !=0) {  
+  if (_DmGndPin != 255) {  
     digitalWrite(_DmPin, HIGH); // Activate DM divider so it sets D- to about 0.6V
     pinMode(_DmPin, OUTPUT);
     digitalWrite(_DmGndPin, LOW);
@@ -298,7 +298,7 @@ inline void QC3Control::dm600mV() {
 }
 
 inline void QC3Control::dm3300mV() {
-  if (_DmGndPin !=0) {  
+  if (_DmGndPin != 255) {  
     digitalWrite(_DmPin, HIGH); // Pull D- up (3.3V minimum)
     pinMode(_DmPin, OUTPUT);  
     pinMode(_DmGndPin, INPUT);     // And leave DM bottom resistor "unconnected" 
