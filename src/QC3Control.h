@@ -260,6 +260,10 @@ class QC3Control{
     static unsigned int getClosestValidMilliVolt(unsigned int mV);
 };
 
+inline void QC3Control::begin(){
+  begin(false) 
+}
+
 inline float QC3Control::getVoltage(){
   return _milliVoltNow/1000.0;
 }

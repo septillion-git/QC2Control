@@ -30,10 +30,6 @@ QC3Control::QC3Control(byte DpPin, byte DmPin):
   //nothing to do
 }
 
-void QC3Control::begin(){
-  begin(false) 
-}
-
 void QC3Control::begin(bool classB) {
   
   _classB = classB;
