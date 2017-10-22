@@ -215,11 +215,11 @@ class QC3Control{
     void QC3Control::switchToContinuousMode();
 
     // Low level functions to obtain desired voltages    
-    void dmHiZ();
-    void dm0V();
-    void dm600mV();
-    void dm3300mV();
-    void dp600mV();
-    void dp3300mV();
+    void dmHiZ(); //!< Sets Data- pin to floating
+    void dm0V(); //!< Sets Data- pin to 0V
+    void dm600mV(); //!< Sets Data- pin to 600mV
+    void dm3300mV(); //!< Sets Data- pin to 3,3V
+    void dp600mV(); //!<Sets Data+ pin to 600mV
+    void dp3300mV(); //!< Sets Data+ pin to 3,3V
 };
 
